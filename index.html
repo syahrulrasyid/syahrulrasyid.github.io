@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syahrul Al-Rasyid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #779ba1;
+            --secondary: #d6a780;
+            --tertiary: #897a74;
+            --accent-yellow: #f6e2ba;
+            --accent-cream: #f4ecd8;
+            --bg-white: #ffffff;
+            --bg-light: #fafaf9;
+            --text-primary: #2c2c2c;
+            --text-secondary: #5c5c5c;
+            --text-muted: #888888;
+            --border-light: #e8e8e8;
+            --shadow-soft: 0 2px 20px rgba(0, 0, 0, 0.04);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-white);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        header {
+            padding: 6rem 0 4rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .name {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.1;
+        }
+
+        .title {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .intro {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .contact-item {
+            padding: 1.25rem 1.5rem;
+            background: var(--accent-cream);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: var(--accent-yellow);
+            transform: translateX(4px);
+        }
+
+        .contact-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .contact-value {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .contact-value a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--secondary);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .tech-category {
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+        }
+
+        .tech-category-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tech-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tech-item {
+            padding: 0.4rem 0.9rem;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .tech-item:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.4rem;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item.current::before {
+            background: var(--secondary);
+            box-shadow: 0 0 0 2px var(--secondary);
+        }
+
+        .timeline-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.75rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .company-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-role {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            background: var(--accent-cream);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .timeline-achievements {
+            list-style: none;
+            margin-top: 1.25rem;
+        }
+
+        .timeline-achievements li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .timeline-achievements li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .project-card.featured {
+            border: 2px solid var(--primary);
+            background: linear-gradient(135deg, var(--accent-cream), white);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .project-company {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            background: var(--accent-cream);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .project-impact {
+            background: var(--accent-yellow);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-impact-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--tertiary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-impact-value {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tech-item {
+            padding: 0.35rem 0.85rem;
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .project-tech-item:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-light);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            header {
+                padding: 4rem 0 3rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                gap: 2rem;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item::before {
+                left: -1.9rem;
+            }
+
+            .timeline-card {
+                padding: 1.5rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 15px;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 700px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 class="name">Syahrul Al-Rasyid</h1>
+            <p class="title">Coder</p>
+            <p class="intro">
+                Architecting secure, scalable systems with over 6 years of experience in financial technology, enterprise
+                security, and high-availability platforms. From core banking transactions to enterprise-grade security
+                infrastructure.
+            </p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">Years</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Companies</div>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-subtitle">Jakarta, Indonesia</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="mailto:syahrull75.sar@gmail.com">syahrull75.sar@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">+62 859-5459-0588</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">GitHub</div>
+                    <div class="contact-value">
+                        <a href="https://github.com/syahrulrasyid" target="_blank">github.com/syahrulrasyid</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Location</div>
+                    <div class="contact-value">Jakarta, Indonesia</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">Languages, frameworks, and tools</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <div class="tech-category-title">Languages</div>
+                    <div class="tech-items">
+                        <span class="tech-item">Go</span>
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">Java</span>
+                        <span class="tech-item">Kotlin</span>
+                        <span class="tech-item">.NET</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-category-title">Cloud & Infrastructure</div>
+                    <div class="tech-items">
+                        <span class="tech-item">AWS</span>
+                        <span class="tech-item">GCP</span>
+                        <span class="tech-item">Kubernetes</span>
+                        <span class="tech-item">Linux</span>
+                        <span class="tech-item">Docker</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-category-title">Databases</div>
+                    <div class="tech-items">
+                        <span class="tech-item">MySQL</span>
+                        <span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">Redis</span>
+                        <span class="tech-item">MongoDB</span>
+                        <span class="tech-item">Elasticsearch</span>
+                        <span class="tech-item">Oracle</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-category-title">Practices</div>
+                    <div class="tech-items">
+                        <span class="tech-item">TDD</span>
+                        <span class="tech-item">Integration Testing</span>
+                        <span class="tech-item">OOP</span>
+                        <span class="tech-item">Domain Driven Design</span>
+                        <span class="tech-item">CI/CD</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-category-title">APIs & Protocols</div>
+                    <div class="tech-items">
+                        <span class="tech-item">REST APIs</span>
+                        <span class="tech-item">GraphQL</span>
+                        <span class="tech-item">gRPC</span>
+                        <span class="tech-item">Protobuf</span>
+                        <span class="tech-item">JSON</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-category-title">Security & Specialized</div>
+                    <div class="tech-items">
+                        <span class="tech-item">Encryption</span>
+                        <span class="tech-item">SIEM</span>
+                        <span class="tech-item">App Security</span>
+                        <span class="tech-item">Finance</span>
+                        <span class="tech-item">Banking</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">High-impact systems and solutions</p>
+            </div>
+            <div class="project-grid">
+                <div class="project-card featured">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Core Banking Transaction Systems</div>
+                            <span class="project-company">byOrange (Bank Aladin Syariah)</span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Delivered high-volume banking transaction systems including BI Fast payment gateway, recurring
+                        transactions, and OpenAPI for Banking as a Service.
+                    </div>
+                    <div class="project-impact">
+                        <div class="project-impact-label">Impact</div>
+                        <div class="project-impact-value">Processing 10,000+ transactions daily with 99.99% uptime</div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-item">Go</span>
+                        <span class="project-tech-item">MySQL</span>
+                        <span class="project-tech-item">PostgreSQL</span>
+                        <span class="project-tech-item">REST APIs</span>
+                        <span class="project-tech-item">gRPC</span>
+                        <span class="project-tech-item">Datadog</span>
+                    </div>
+                </div>
+
+                <div class="project-card featured">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Application Security Tooling & Data Protection</div>
+                            <span class="project-company">Adira Finance</span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Built comprehensive tools for data discovery, classification, asset harvesting, and centralized
+                        encryption/decryption platforms.
+                    </div>
+                    <div class="project-impact">
+                        <div class="project-impact-label">Impact</div>
+                        <div class="project-impact-value">Automated security workflows reducing manual effort by 85%</div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-item">Go</span>
+                        <span class="project-tech-item">Bash</span>
+                        <span class="project-tech-item">ELK Stack</span>
+                        <span class="project-tech-item">Automation</span>
+                        <span class="project-tech-item">SIEM</span>
+                    </div>
+                </div>
+
+                <div class="project-card featured">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Money Movement & Digital Banking</div>
+                            <span class="project-company">KoinWorks NEO</span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Developed money movement workflows and integrated with third-party payment and banking APIs for
+                        digital banking suite.
+                    </div>
+                    <div class="project-impact">
+                        <div class="project-impact-label">Impact</div>
+                        <div class="project-impact-value">Enabled seamless financial transactions for millions of users</div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-item">Go</span>
+                        <span class="project-tech-item">SQL</span>
+                        <span class="project-tech-item">REST APIs</span>
+                        <span class="project-tech-item">Unit Testing</span>
+                        <span class="project-tech-item">Integration</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">E-Commerce Order & Payment</div>
+                            <span class="project-company">PT Indo Teknologi Cemerlang</span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Built robust order management and payment systems for Aroma Medan e-commerce platform.
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-item">Go</span>
+                        <span class="project-tech-item">SQL</span>
+                        <span class="project-tech-item">REST APIs</span>
+                        <span class="project-tech-item">Payment Gateway</span>
+                        <span class="project-tech-item">Testing</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Construction Industry Monitoring</div>
+                            <span class="project-company">PT Empore Hezer Tama</span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Developed system monitoring applications for construction industry clients with real-time project
+                        tracking.
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-item">Go</span>
+                        <span class="project-tech-item">GraphQL</span>
+                        <span class="project-tech-item">gRPC</span>
+                        <span class="project-tech-item">Real-time</span>
+                        <span class="project-tech-item">Monitoring</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">Large-Scale Data Engineering & ETL</div>
+                            <span class="project-company">PT eBdesk Teknologi</span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Built and maintained large-scale ETL pipelines, data processing, and monitoring systems.
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-item">Python</span>
+                        <span class="project-tech-item">Go</span>
+                        <span class="project-tech-item">Message Queues</span>
+                        <span class="project-tech-item">NoSQL</span>
+                        <span class="project-tech-item">ETL</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">CRUD Fullstack Toray</div>
+                            <span class="project-company">Personal Project</span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Fullstack CRUD application for tracking employee work hours and summarizing overwork payments.
+                    </div>
+                    <div class="project-tech">
+                        <span class="project-tech-item">.NET Core</span>
+                        <span class="project-tech-item">ASP.NET MVC</span>
+                        <span class="project-tech-item">SQLServer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Professional Journey</h2>
+                <p class="section-subtitle">Career timeline and achievements</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item current">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="company-name">Adira Finance</div>
+                                <div class="timeline-role">Senior Security Engineer</div>
+                            </div>
+                            <div class="timeline-date">Dec 2024 – Present</div>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Architected and implemented enterprise-grade application security policies and compliance
+                                standards</li>
+                            <li>Built automated data protection platform enabling real-time discovery, classification, and
+                                asset harvesting</li>
+                            <li>Developed centralized encryption/decryption platform with custom vault key management
+                                system</li>
+                            <li>Designed comprehensive monitoring solutions for security tools, ensuring 99.9% uptime and
+                                rapid threat detection</li>
+                            <li>Automated deployment of security agents (Tenable Nessus, Wazuh) reducing manual
+                                configuration time by 80%</li>
+                            <li>Led end-to-end project planning and timeline management for high-priority security
+                                initiatives</li>
+                            <li>Collaborated with SIEM engineers to enhance ELK stack-based monitoring with custom scripts
+                                and integrations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="company-name">byOrange</div>
+                                <div class="timeline-role">Senior Backend Engineer</div>
+                            </div>
+                            <div class="timeline-date">Jul 2022 – Dec 2024</div>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Delivered core banking transaction systems for Bank Aladin Syariah, including BI Fast
+                                integration and OpenAPI for Banking as a Service</li>
+                            <li>Architected highly scalable systems processing thousands of transactions daily with zero
+                                downtime</li>
+                            <li>Led integration of multiple third-party payment APIs, ensuring secure and reliable money
+                                movement</li>
+                            <li>Developed RESTful and RPC-based microservices using Go, SQL, and Git following best
+                                practices</li>
+                            <li>Implemented comprehensive unit and integration testing achieving 90%+ code coverage</li>
+                            <li>Established monitoring and alerting using Datadog, reducing incident response time by 60%</li>
+                            <li>Maintained 99.99% system uptime through proactive production support and issue resolution</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="company-name">KoinWorks</div>
+                                <div class="timeline-role">Senior Backend Engineer</div>
+                            </div>
+                            <div class="timeline-date">May 2021 – June 2022</div>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Key contributor to KoinWorks NEO digital banking product suite</li>
+                            <li>Developed and maintained money movement workflows with seamless third-party API integrations
+                            </li>
+                            <li>Built high-performance backend services using Go, SQL, and Git</li>
+                            <li>Established comprehensive testing frameworks for both unit and integration testing</li>
+                            <li>Provided 24/7 production support, ensuring minimal service disruption</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="company-name">PT Indo Teknologi Cemerlang</div>
+                                <div class="timeline-role">Backend Engineer</div>
+                            </div>
+                            <div class="timeline-date">Feb 2021 – May 2021</div>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Developed order and payment systems for Aroma Medan e-commerce platform</li>
+                            <li>Designed and implemented RESTful APIs with Go and SQL</li>
+                            <li>Established automated testing pipeline for rapid feature deployment</li>
+                            <li>Delivered solutions to complex production challenges within tight deadlines</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="company-name">PT Empore Hezer Tama</div>
+                                <div class="timeline-role">Backend Engineer</div>
+                            </div>
+                            <div class="timeline-date">Oct 2020 – Feb 2021</div>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Built system monitoring applications for construction industry clients</li>
+                            <li>Developed GraphQL and RPC APIs for real-time data access</li>
+                            <li>Implemented comprehensive unit testing ensuring code reliability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="company-name">PT eBdesk Teknologi</div>
+                                <div class="timeline-role">Data Engineer</div>
+                            </div>
+                            <div class="timeline-date">Oct 2019 – Oct 2020</div>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Specialized in large-scale data processing and ETL pipelines</li>
+                            <li>Designed and maintained robust data pipelines using Python, Go, message queues, and multiple
+                                databases</li>
+                            <li>Automated data monitoring processes with real-time alerting systems</li>
+                            <li>Processed millions of records daily with 99.9% accuracy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>2026 Syahrul Al-Rasyid</p>
+        </footer>
+    </div>
+</body>
+
+</html>
