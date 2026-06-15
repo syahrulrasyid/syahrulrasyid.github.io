@@ -4,2389 +4,1556 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syahrul Al-Rasyid</title>
+    <title>Syahrul Al-Rasyid | CV</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --warm-orange: #ffb347;
-            --warm-orange-neon: #ffa500;
-            --warm-pink: #ff9a8b;
-            --warm-pink-neon: #ff7f7f;
-            --warm-peach: #ffd6a5;
-            --warm-purple: #d4a5a5;
-            --warm-purple-neon: #b8868c;
-            --warm-yellow: #ffeaa7;
-            --warm-yellow-neon: #fdcb6e;
-            --bg-dark: #1a1a2e;
-            --bg-panel: #16213e;
-            --bg-panel-light: #1f3460;
-            --text-primary: #fff5ee;
-            --text-secondary: #e8ded5;
-            --text-muted: #b5a895;
-            --border-light: rgba(255, 179, 71, 0.4);
-            --border-orange: rgba(255, 165, 0, 0.5);
-            --glow-orange: 0 0 25px rgba(255, 165, 0, 0.6);
-            --glow-pink: 0 0 25px rgba(255, 127, 127, 0.6);
-            --glow-peach: 0 0 25px rgba(255, 214, 165, 0.6);
-            --crt-glow: 0 0 100px rgba(255, 165, 0, 0.15);
+            /* Codédex Classic Light Mode Palette */
+            --codedex-black: #1a1a1a;
+            --codedex-dark-gray: #4a4a4a;
+            --codedex-border: #1a1a1a;
+            --codedex-bg-main: #f9f9f9;
+            --codedex-bg-surface: #ffffff;
+            --codedex-bg-accent: #eaeaea;
+            --codedex-text: #1a1a1a;
+            --codedex-text-muted: #666666;
+
+            /* Codédex Flat Block Colors */
+            --codedex-mint: #00e699;
+            --codedex-purple: #c084fc;
+            --codedex-yellow: #ffcc00;
+            --codedex-salmon: #ff6b6b;
+            --codedex-blue: #4da6ff;
+
+            /* Interface Parameters */
+            --card-radius: 12px;
+            --ui-border-width: 3px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Boot Screen */
-        .boot-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #000;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Press Start 2P', cursive;
-            color: var(--warm-orange-neon);
-            transition: opacity 0.5s ease;
-        }
-
-        .boot-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .boot-logo {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            animation: glitch 1s infinite;
-        }
-
-        .boot-text {
-            font-size: 0.7rem;
-            color: var(--warm-peach);
-            margin-bottom: 0.5rem;
-            opacity: 0;
-            animation: typeIn 0.5s forwards;
-        }
-
-        .boot-text:nth-child(2) { animation-delay: 0.3s; }
-        .boot-text:nth-child(3) { animation-delay: 0.6s; }
-        .boot-text:nth-child(4) { animation-delay: 0.9s; }
-        .boot-text:nth-child(5) { animation-delay: 1.2s; }
-
-        .boot-progress {
-            width: 300px;
-            height: 20px;
-            border: 3px solid var(--warm-orange-neon);
-            margin-top: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .boot-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--warm-orange-neon), var(--warm-pink-neon));
-            width: 0%;
-            animation: loadProgress 2s forwards;
-            animation-delay: 1.5s;
-        }
-
-        .boot-prompt {
-            margin-top: 2rem;
-            font-size: 0.6rem;
-            opacity: 0;
-            animation: blink 1s infinite, fadeIn 0.5s forwards 3.5s;
-        }
-
-        @keyframes loadProgress {
-            0% { width: 0%; }
-            20% { width: 20%; }
-            40% { width: 45%; }
-            60% { width: 70%; }
-            80% { width: 85%; }
-            100% { width: 100%; }
-        }
-
-        @keyframes typeIn {
-            from { opacity: 0; transform: translateX(-10px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Fira Code', monospace;
-            background: var(--bg-dark);
-            color: var(--text-primary);
+            background-color: var(--codedex-bg-main);
+            color: var(--codedex-text);
             line-height: 1.6;
-            font-size: 16px;
+            padding: 2rem 1.5rem;
             min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 1.5rem;
-            overflow-x: hidden;
+            align-items: flex-start;
         }
 
-        /* Animated Background Stars */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: -2;
-            overflow: hidden;
-        }
-
-        .star {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--warm-peach);
-            animation: twinkle 3s infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-        }
-
-        /* Floating Pixels */
-        .floating-pixels {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .pixel {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--warm-orange-neon);
-            opacity: 0.3;
-            animation: floatUp 15s infinite linear;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.3; }
-            90% { opacity: 0.3; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(90deg, rgba(255, 179, 71, 0.02) 1px, transparent 1px),
-                linear-gradient(rgba(212, 165, 165, 0.02) 1px, transparent 1px);
-            background-size: 16px 16px;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* CRT Effect */
-        .crt-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        .crt-overlay::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.1) 0px,
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 3px
-            );
-            animation: scanlines 0.1s infinite linear;
-        }
-
-        .crt-overlay::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%);
-        }
-
-        @keyframes scanlines {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(3px); }
-        }
-
-        /* Screen Flicker */
-        .screen-flicker {
-            animation: flicker 0.15s infinite;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 0.97; }
-            50% { opacity: 1; }
-            100% { opacity: 0.98; }
-        }
-
-        /* Glitch Effect */
-        @keyframes glitch {
-            0% { text-shadow: 2px 0 var(--warm-pink-neon), -2px 0 var(--warm-orange-neon); }
-            20% { text-shadow: -2px 0 var(--warm-pink-neon), 2px 0 var(--warm-orange-neon); }
-            40% { text-shadow: 2px 0 var(--warm-pink-neon), -2px 0 var(--warm-orange-neon); }
-            60% { text-shadow: -2px 0 var(--warm-pink-neon), 2px 0 var(--warm-orange-neon); }
-            80% { text-shadow: 2px 0 var(--warm-pink-neon), -2px 0 var(--warm-orange-neon); }
-            100% { text-shadow: -2px 0 var(--warm-pink-neon), 2px 0 var(--warm-orange-neon); }
-        }
-
-        .glitch-text {
-            animation: glitch 3s infinite;
-        }
-
-        .game-console {
+        /* Codédex Crisp Frame Container */
+        .codedex-wrapper {
             width: 100%;
-            max-width: 1600px;
-            height: 90vh;
-            background: var(--bg-panel);
-            border: 4px solid var(--warm-orange-neon);
-            border-radius: 16px;
-            box-shadow: var(--crt-glow), inset 0 0 100px rgba(0, 0, 0, 0.3);
-            position: relative;
+            max-width: 1200px;
+            background-color: var(--codedex-bg-surface);
+            border: var(--ui-border-width) solid var(--codedex-border);
+            border-radius: var(--card-radius);
+            box-shadow: 8px 8px 0px var(--codedex-black);
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
-        .game-console::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--warm-orange-neon), var(--warm-pink-neon), var(--warm-yellow-neon));
-            border-radius: 16px 16px 0 0;
-            animation: rainbow-shift 3s infinite linear;
-        }
-
-        .game-console::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--warm-orange-neon), var(--warm-pink-neon), var(--warm-yellow-neon));
-            border-radius: 0 0 16px 16px;
-            animation: rainbow-shift 3s infinite linear reverse;
-        }
-
-        @keyframes rainbow-shift {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(30deg); }
-        }
-
-        .screen {
-            flex: 1;
+        /* Top Meta Header Strip */
+        .codedex-header {
+            background-color: var(--codedex-bg-accent);
+            border-bottom: var(--ui-border-width) solid var(--codedex-border);
             padding: 2rem;
-            background: rgba(0, 0, 0, 0.15);
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-
-        .screen::-webkit-scrollbar {
-            width: 14px;
-        }
-
-        .screen::-webkit-scrollbar-track {
-            background: var(--bg-panel);
-        }
-
-        .screen::-webkit-scrollbar-thumb {
-            background: var(--warm-orange-neon);
-            border-radius: 8px;
-        }
-
-        .screen::-webkit-scrollbar-thumb:hover {
-            background: var(--warm-orange);
-        }
-
-        /* Arcade Cabinet Decorations */
-        .arcade-decoration {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 8px;
-        }
-
-        .arcade-led {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            animation: led-pulse 1s infinite;
-        }
-
-        .arcade-led.red { background: #ff4444; animation-delay: 0s; }
-        .arcade-led.yellow { background: #ffaa00; animation-delay: 0.3s; }
-        .arcade-led.green { background: #44ff44; animation-delay: 0.6s; }
-
-        @keyframes led-pulse {
-            0%, 100% { opacity: 0.5; box-shadow: none; }
-            50% { opacity: 1; box-shadow: 0 0 10px currentColor; }
-        }
-
-        .header-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
-            background: linear-gradient(135deg, rgba(255, 179, 71, 0.12), rgba(255, 154, 139, 0.12));
-            margin-bottom: 2rem;
-            position: relative;
             flex-wrap: wrap;
             gap: 1.5rem;
-            border-radius: 12px;
-            border: 2px solid var(--border-light);
-            transition: all 0.3s ease;
         }
 
-        .header-bar:hover {
-            border-color: var(--warm-orange-neon);
-            box-shadow: var(--glow-orange);
-            transform: scale(1.01);
-        }
-
-        .player-info {
+        .profile-container {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
+            gap: 1.5rem;
         }
 
-        .player-avatar {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--warm-orange-neon), var(--warm-pink-neon));
-            border: 4px solid var(--text-primary);
+        /* Codédex Pixel Avatar Block */
+        .avatar-block {
+            width: 75px;
+            height: 75px;
+            background-color: var(--codedex-purple);
+            border: 3px solid var(--codedex-black);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Press Start 2P', cursive;
-            font-size: 0.9rem;
-            color: var(--bg-dark);
-            animation: pulse 2s infinite, pixelate 0.5s infinite;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            font-size: 1.2rem;
+            color: var(--codedex-black);
+            box-shadow: 4px 4px 0px var(--codedex-black);
+            cursor: pointer;
+            user-select: none;
         }
 
-        .player-avatar::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shine 3s infinite;
+        .avatar-block:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--codedex-black);
         }
 
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        @keyframes pixelate {
-            0%, 100% { image-rendering: pixelated; }
-        }
-
-        .player-avatar:hover {
-            transform: rotate(5deg) scale(1.1);
-            box-shadow: var(--glow-orange);
-            animation: bounce 0.5s ease;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: rotate(5deg) scale(1.1); }
-            50% { transform: rotate(-5deg) scale(1.15); }
-        }
-
-        .player-name {
+        .user-title-area h1 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 1rem;
-            color: var(--text-primary);
-            text-shadow: 2px 2px 0 var(--warm-pink-neon);
-            position: relative;
+            font-size: 1.2rem;
+            color: var(--codedex-black);
+            margin-bottom: 0.5rem;
         }
 
-        .typing-cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background: var(--warm-orange-neon);
-            margin-left: 5px;
-            animation: cursor-blink 0.7s infinite;
-            vertical-align: middle;
-        }
-
-        @keyframes cursor-blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .role-badge {
-            background: linear-gradient(135deg, var(--warm-orange-neon), var(--warm-pink-neon));
-            color: var(--bg-dark);
-            padding: 0.5rem 1rem;
+        .rank-badge {
+            background-color: var(--codedex-mint);
+            color: var(--codedex-black);
+            padding: 0.35rem 0.75rem;
             font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            border-radius: 6px;
-            margin-top: 0.5rem;
+            font-size: 0.55rem;
+            font-weight: bold;
+            border-radius: 4px;
+            border: 2px solid var(--codedex-black);
             display: inline-block;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .role-badge::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            100% { left: 100%; }
-        }
-
-        .role-badge:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--glow-pink);
-        }
-
-        .contact-mini {
+        .comms-node {
             display: flex;
-            gap: 1rem;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .contact-mini span {
+        .comms-link {
+            background-color: var(--codedex-bg-surface);
+            border: 2px solid var(--codedex-border);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--codedex-black);
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.4rem 0.8rem;
-            background: rgba(255, 165, 0, 0.1);
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            transition: all 0.3s ease;
+            font-weight: bold;
             cursor: pointer;
+            box-shadow: 3px 3px 0px var(--codedex-black);
         }
 
-        .contact-mini span:hover {
-            border-color: var(--warm-peach);
-            background: rgba(255, 214, 165, 0.15);
-            box-shadow: var(--glow-peach);
-            transform: translateY(-2px) scale(1.05);
+        .comms-link:hover {
+            background-color: var(--codedex-mint);
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px var(--codedex-black);
         }
 
-        .menu-nav {
+        .comms-link:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px var(--codedex-black);
+        }
+
+        /* Capacity Tracking Dashboard HUD */
+        .dashboard-hud {
+            padding: 1.5rem 2rem;
+            background-color: rgba(0, 0, 0, 0.03);
+            border-bottom: var(--ui-border-width) solid var(--codedex-border);
+        }
+
+        .hud-meta {
             display: flex;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .menu-btn {
-            padding: 1rem 1.8rem;
-            background: var(--bg-panel-light);
-            border: 3px solid var(--border-light);
+            justify-content: space-between;
             font-family: 'Press Start 2P', cursive;
             font-size: 0.6rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 8px;
+            color: var(--codedex-text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .hud-progress-container {
+            height: 24px;
+            background-color: var(--codedex-bg-surface);
+            border: 2px solid var(--codedex-border);
+            border-radius: 6px;
             overflow: hidden;
+            padding: 2px;
         }
 
-        .menu-btn::before {
-            content: '>';
-            margin-right: 0.5rem;
-            opacity: 0;
-            transition: all 0.2s ease;
-            color: var(--warm-orange-neon);
-            display: inline-block;
-            animation: blink 0.5s infinite;
-        }
-
-        .menu-btn:hover,
-        .menu-btn.active {
-            background: linear-gradient(135deg, rgba(255, 165, 0, 0.2), rgba(255, 127, 127, 0.2));
-            border-color: var(--warm-orange-neon);
-            color: var(--text-primary);
-            box-shadow: var(--glow-orange), inset 0 0 20px rgba(255, 165, 0, 0.1);
-            transform: translateY(-4px) scale(1.05);
-        }
-
-        .menu-btn:hover::before,
-        .menu-btn.active::before {
-            opacity: 1;
-            transform: translateX(3px);
-        }
-
-        .menu-btn:active {
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        /* Keyboard hint */
-        .keyboard-hint {
-            font-size: 0.5rem;
-            color: var(--text-muted);
-            text-align: center;
-            margin-bottom: 1rem;
-            font-family: 'Press Start 2P', cursive;
-            animation: pulse 2s infinite;
-        }
-
-        .keyboard-hint kbd {
-            background: var(--bg-panel-light);
-            border: 2px solid var(--border-orange);
-            padding: 0.3rem 0.5rem;
+        .hud-progress-fill {
+            height: 100%;
+            background-color: var(--codedex-purple);
+            width: 88%;
             border-radius: 4px;
-            margin: 0 0.2rem;
+            border-right: 2px solid var(--codedex-black);
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .content-panel {
-            display: none;
-            animation: slideIn 0.4s ease;
+        /* Flat Metrics Data Blocks */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            border-bottom: var(--ui-border-width) solid var(--codedex-border);
+            background-color: var(--codedex-bg-surface);
         }
 
-        .content-panel.active {
-            display: block;
+        .stat-card {
+            background-color: var(--codedex-bg-surface);
+            border: 2px solid var(--codedex-border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px var(--codedex-black);
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .stat-card:hover {
+            background-color: rgba(255, 204, 0, 0.05);
+            border-color: var(--codedex-black);
         }
 
-        .panel-title {
+        .stat-card:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--codedex-black);
+        }
+
+        .stat-card .val {
             font-family: 'Press Start 2P', cursive;
-            font-size: 1rem;
-            color: var(--warm-peach);
+            font-size: 1.7rem;
+            color: var(--codedex-black);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-card .lbl {
+            font-size: 0.8rem;
+            color: var(--codedex-text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Horizontal Router Navigation Bar Tabs */
+        .tab-router {
+            display: flex;
+            background-color: var(--codedex-bg-accent);
+            border-bottom: var(--ui-border-width) solid var(--codedex-border);
+            overflow-x: auto;
+        }
+
+        .tab-link {
+            padding: 1.25rem 2rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.65rem;
+            color: var(--codedex-text-muted);
+            background: none;
+            border: none;
+            border-right: var(--ui-border-width) solid var(--codedex-border);
+            cursor: pointer;
+            text-transform: uppercase;
+            white-space: nowrap;
+            font-weight: bold;
+            transition: all 0.1s ease;
+        }
+
+        .tab-link:hover {
+            color: var(--codedex-black);
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .tab-link.active {
+            color: var(--codedex-black);
+            background-color: var(--codedex-mint);
+            border-bottom: none;
+        }
+
+        /* Routing Viewport Panels */
+        .panel {
+            display: none;
+            padding: 2.5rem 2rem;
+            background-color: var(--codedex-bg-surface);
+        }
+
+        .panel.active { display: block; }
+
+        .panel-heading {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.9rem;
+            color: var(--codedex-black);
             margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid var(--border-orange);
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
-        .panel-title::before {
-            content: '>';
-            color: var(--warm-orange-neon);
-            animation: blink 1s infinite;
+        .panel-heading::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: var(--codedex-black);
         }
 
-        .panel-title::after {
-            content: '_';
-            color: var(--warm-orange-neon);
-            animation: blink 0.7s infinite;
+        /* Summary Blurb */
+        .summary-blurb {
+            background-color: var(--codedex-bg-surface);
+            border: 2px solid var(--codedex-border);
+            border-radius: var(--card-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 4px 4px 0px var(--codedex-black);
+            font-size: 1.05rem;
+            line-height: 1.9;
         }
+        .summary-blurb strong { color: var(--codedex-black); background-color: rgba(192, 132, 252, 0.15); padding: 0 0.2rem; }
 
-        .grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: var(--bg-panel-light);
-            border: 2px solid var(--border-light);
-            padding: 1.75rem;
-            transition: all 0.3s ease;
+        /* Flat Matte Timeline Log Components */
+        .log-item {
+            background-color: var(--codedex-bg-surface);
+            border: 2px solid var(--codedex-border);
+            border-radius: var(--card-radius);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 4px 4px 0px var(--codedex-black);
             position: relative;
-            cursor: pointer;
-            border-radius: 12px;
-            overflow: hidden;
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.1), transparent);
-            transition: left 0.5s ease;
+        .log-item.highlighted {
+            border: 3px solid var(--codedex-border);
+            background-color: rgba(192, 132, 252, 0.02);
+            box-shadow: 6px 6px 0px var(--codedex-black);
         }
 
-        .card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 2px solid transparent;
-            border-radius: 12px;
-            transition: all 0.3s ease;
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .card:hover {
-            border-color: var(--warm-orange-neon);
-            box-shadow: var(--glow-orange);
-            transform: translateY(-5px) scale(1.02);
-        }
-
-        .card:hover::before {
-            left: 100%;
-        }
-
-        .card:hover::after {
-            border-color: var(--warm-pink-neon);
-            animation: border-dance 1s infinite;
-        }
-
-        @keyframes border-dance {
-            0%, 100% { clip-path: inset(0 0 95% 0); }
-            25% { clip-path: inset(0 95% 0 0); }
-            50% { clip-path: inset(95% 0 0 0); }
-            75% { clip-path: inset(0 0 0 95%); }
-        }
-
-        .card-title {
+        .log-company {
             font-family: 'Press Start 2P', cursive;
-            font-size: 0.7rem;
-            color: var(--text-primary);
+            font-size: 0.75rem;
+            color: var(--codedex-dark-gray);
+            font-weight: bold;
+        }
+
+        .log-item.highlighted .log-company {
+            color: var(--codedex-black);
+            text-decoration: underline;
+        }
+
+        .log-role {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--codedex-black);
+            margin-top: 0.25rem;
+        }
+
+        .log-loc {
+            font-size: 0.9rem;
+            color: var(--codedex-text-muted);
+            margin-top: 0.1rem;
+        }
+
+        .log-time {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            background-color: var(--codedex-bg-accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            color: var(--codedex-black);
+            border: 1px solid var(--codedex-border);
+        }
+
+        .log-summary {
+            font-size: 1rem;
+            color: var(--codedex-text-muted);
+            margin-bottom: 1.25rem;
+            font-style: italic;
+        }
+
+        .bullet-stack {
+            list-style: none;
+        }
+
+        .bullet-stack li {
+            position: relative;
+            padding-left: 1.5rem;
             margin-bottom: 0.75rem;
+            color: var(--codedex-text);
+            font-size: 0.95rem;
             line-height: 1.6;
         }
 
-        .card-subtitle {
+        .bullet-stack li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--codedex-black);
             font-size: 1.2rem;
-            color: var(--warm-peach);
-            margin-bottom: 1rem;
-            font-weight: 500;
+            line-height: 1;
         }
+        .bullet-stack strong { color: var(--codedex-black); }
 
-        .card-content {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .card-meta {
-            margin-top: 1.25rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-light);
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-
-        .stats-row {
-            display: flex;
-            gap: 1.75rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .stat-box {
-            flex: 1;
-            min-width: 180px;
-            background: var(--bg-panel-light);
-            border: 3px solid var(--border-light);
-            padding: 1.5rem 2rem;
-            text-align: center;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .stat-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, transparent, rgba(255, 165, 0, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .stat-box:hover::before {
-            opacity: 1;
-        }
-
-        .stat-box:hover {
-            border-color: var(--warm-orange-neon);
-            box-shadow: var(--glow-orange);
-            transform: translateY(-5px) scale(1.05);
-        }
-
-        .stat-value {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 2rem;
-            color: var(--warm-peach);
-            margin-bottom: 0.5rem;
-            position: relative;
-        }
-
-        .stat-value.counting {
-            animation: countPulse 0.1s ease;
-        }
-
-        @keyframes countPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); color: var(--warm-orange-neon); }
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        /* XP Bar */
-        .xp-bar-container {
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: var(--bg-panel-light);
-            border: 2px solid var(--border-light);
-            border-radius: 12px;
-        }
-
-        .xp-label {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.6rem;
-            color: var(--warm-peach);
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .xp-bar {
-            height: 20px;
-            background: var(--bg-dark);
-            border: 2px solid var(--warm-orange-neon);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .xp-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--warm-orange-neon), var(--warm-pink-neon), var(--warm-yellow-neon));
-            width: 0%;
-            transition: width 2s ease;
-            position: relative;
-        }
-
-        .xp-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 10px,
-                rgba(0,0,0,0.1) 10px,
-                rgba(0,0,0,0.1) 20px
-            );
-            animation: xp-scroll 1s infinite linear;
-        }
-
-        @keyframes xp-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(20px); }
-        }
-
-        .tech-grid {
+        /* Skill Matrix Block Categories */
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
-        .tech-card {
-            background: var(--bg-panel-light);
-            border: 2px solid var(--border-light);
+        .skills-category-card {
+            background-color: var(--codedex-bg-surface);
+            border: 2px solid var(--codedex-border);
+            border-radius: var(--card-radius);
             padding: 1.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border-radius: 12px;
-            position: relative;
+            box-shadow: 4px 4px 0px var(--codedex-black);
         }
 
-        .tech-card:hover {
-            border-color: var(--warm-peach);
-            box-shadow: var(--glow-peach);
-            transform: translateY(-3px) scale(1.02);
-        }
-
-        .tech-card-title {
+        .skills-title {
             font-family: 'Press Start 2P', cursive;
-            font-size: 0.55rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
+            font-size: 0.62rem;
+            color: var(--codedex-black);
+            margin-bottom: 1.25rem;
             text-transform: uppercase;
+            line-height: 1.5;
         }
 
-        .tech-list {
+        .tag-cloud {
             display: flex;
             flex-wrap: wrap;
             gap: 0.6rem;
         }
 
-        .tech-tag {
-            padding: 0.5rem 1rem;
-            background: rgba(255, 165, 0, 0.12);
-            border: 2px solid rgba(255, 165, 0, 0.3);
-            font-size: 1rem;
-            color: var(--warm-peach);
-            transition: all 0.3s ease;
+        .block-tag {
+            background-color: var(--codedex-bg-main);
+            border: 2px solid var(--codedex-border);
+            padding: 0.5rem 0.85rem;
+            font-size: 0.9rem;
+            color: var(--codedex-text);
             border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.1s ease;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
         }
 
-        .tech-tag::before {
-            content: '+';
-            position: absolute;
-            left: -20px;
-            opacity: 0;
-            transition: all 0.3s ease;
-            color: var(--bg-dark);
+        .block-tag:hover {
+            background-color: var(--codedex-salmon);
+            color: white;
+            transform: translate(-2px, -2px);
+            box-shadow: 3px 3px 0px var(--codedex-black);
         }
 
-        .tech-tag:hover {
-            background: var(--warm-orange-neon);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px rgba(255, 165, 0, 0.6);
-            transform: translateY(-2px) scale(1.05);
-            padding-left: 1.5rem;
-        }
-
-        .tech-tag:hover::before {
-            left: 8px;
-            opacity: 1;
-        }
-
-        .contact-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .contact-item {
-            background: var(--bg-panel-light);
-            border: 2px solid var(--border-light);
-            padding: 1.25rem 1.75rem;
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-item::after {
-            content: '>';
-            position: absolute;
-            right: 20px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1rem;
-            color: var(--warm-orange-neon);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            border-color: var(--warm-orange-neon);
-            box-shadow: var(--glow-orange);
-            transform: translateX(8px);
-        }
-
-        .contact-item:hover::after {
-            opacity: 1;
-            animation: arrow-bounce 0.5s infinite;
-        }
-
-        @keyframes arrow-bounce {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(5px); }
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--warm-orange-neon), var(--warm-pink-neon));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.7rem;
-            color: var(--bg-dark);
-            border-radius: 10px;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover .contact-icon {
-            transform: rotate(10deg) scale(1.1);
-            animation: icon-shake 0.3s ease;
-        }
-
-        @keyframes icon-shake {
-            0%, 100% { transform: rotate(10deg) scale(1.1); }
-            25% { transform: rotate(15deg) scale(1.1); }
-            75% { transform: rotate(5deg) scale(1.1); }
-        }
-
-        .contact-label {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-value {
-            font-size: 1.15rem;
-            color: var(--text-primary);
-        }
-
-        .contact-value a {
-            color: var(--warm-peach);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .contact-value a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--warm-orange-neon);
-            transition: width 0.3s ease;
-        }
-
-        .contact-value a:hover {
-            color: var(--warm-orange-neon);
-            text-shadow: 0 0 15px rgba(255, 165, 0, 0.6);
-        }
-
-        .contact-value a:hover::after {
-            width: 100%;
-        }
-
-        .exp-item {
-            background: var(--bg-panel-light);
-            border: 2px solid var(--border-light);
-            padding: 1.75rem;
-            margin-bottom: 1.75rem;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .exp-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--border-light);
-            transition: all 0.3s ease;
-        }
-
-        .exp-item:hover::before {
-            background: var(--warm-orange-neon);
-            box-shadow: 0 0 20px var(--warm-orange-neon);
-        }
-
-        .exp-item:hover {
-            border-color: var(--warm-peach);
-            box-shadow: var(--glow-peach);
-            transform: translateX(6px);
-        }
-
-        .exp-item.current {
-            border-color: var(--warm-orange-neon);
-            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), var(--bg-panel-light));
-        }
-
-        .exp-item.current::before {
-            background: var(--warm-orange-neon);
-            animation: pulse-bar 2s infinite;
-        }
-
-        @keyframes pulse-bar {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Current Badge */
-        .current-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--warm-orange-neon);
-            color: var(--bg-dark);
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.4rem;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            animation: badge-pulse 2s infinite;
-        }
-
-        @keyframes badge-pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); box-shadow: 0 0 10px var(--warm-orange-neon); }
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+        /* Mission Cards */
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 1.25rem;
-            flex-wrap: wrap;
         }
 
-        .exp-company {
+        .mission-card {
+            background-color: var(--codedex-bg-surface);
+            border: 2px solid var(--codedex-border);
+            border-radius: var(--card-radius);
+            padding: 1.75rem;
+            box-shadow: 4px 4px 0px var(--codedex-black);
+            transition: transform 0.1s;
+        }
+
+        .mission-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--codedex-black);
+        }
+
+        .mission-card.highlighted {
+            border-color: var(--codedex-purple);
+            box-shadow: 6px 6px 0px var(--codedex-purple);
+        }
+
+        .mission-card-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.58rem;
+            color: var(--codedex-dark-gray);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .mission-card-subtitle {
+            font-size: 1.1rem;
+            color: var(--codedex-black);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .mission-card-content {
+            font-size: 1rem;
+            color: var(--codedex-text-muted);
+            line-height: 1.7;
+        }
+
+        .mission-card-meta {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 2px solid var(--codedex-bg-accent);
+            font-size: 0.9rem;
+            color: var(--codedex-text-muted);
+        }
+
+        /* Academic Dynamic Blocks */
+        .academic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .academic-card {
+            background-color: var(--codedex-bg-surface);
+            border: 2px solid var(--codedex-border);
+            border-radius: var(--card-radius);
+            padding: 2rem;
+            box-shadow: 4px 4px 0px var(--codedex-black);
+        }
+
+        .academic-header {
             font-family: 'Press Start 2P', cursive;
             font-size: 0.65rem;
-            color: var(--text-primary);
+            color: var(--codedex-dark-gray);
             margin-bottom: 0.5rem;
         }
 
-        .exp-role {
-            font-size: 1.25rem;
-            color: var(--warm-peach);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .exp-location {
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-
-        .exp-date {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            color: var(--text-muted);
-            background: rgba(255, 179, 71, 0.2);
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--border-orange);
-            border-radius: 6px;
-        }
-
-        .exp-achievements {
-            list-style: none;
-            margin-top: 1.25rem;
-        }
-
-        .exp-achievements li {
-            position: relative;
-            padding-left: 1.75rem;
+        .academic-institute {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--codedex-black);
             margin-bottom: 1rem;
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            line-height: 1.6;
-            opacity: 0;
-            transform: translateX(-10px);
-            animation: fadeInLeft 0.5s forwards;
         }
 
-        .exp-achievements li:nth-child(1) { animation-delay: 0.1s; }
-        .exp-achievements li:nth-child(2) { animation-delay: 0.2s; }
-        .exp-achievements li:nth-child(3) { animation-delay: 0.3s; }
-        .exp-achievements li:nth-child(4) { animation-delay: 0.4s; }
-        .exp-achievements li:nth-child(5) { animation-delay: 0.5s; }
-        .exp-achievements li:nth-child(6) { animation-delay: 0.6s; }
-
-        @keyframes fadeInLeft {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .academic-content {
+            font-size: 1rem;
+            color: var(--codedex-text-muted);
         }
 
-        .exp-achievements li::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--warm-peach);
-            font-weight: bold;
-            font-size: 1.2rem;
-            font-family: 'Press Start 2P', cursive;
-            animation: blink 1s infinite;
+        /* Contact Connect Nodes */
+        .contact-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .exp-achievements strong {
-            color: var(--warm-peach);
+        .contact-node {
+            background-color: var(--codedex-bg-surface);
+            border: 2px solid var(--codedex-border);
+            border-radius: var(--card-radius);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            box-shadow: 4px 4px 0px var(--codedex-black);
+            transition: transform 0.1s;
+            cursor: pointer;
         }
 
-        .summary-card {
-            background: linear-gradient(135deg, rgba(255, 165, 0, 0.12), rgba(255, 127, 127, 0.12));
-            border: 3px solid var(--warm-orange-neon);
-            padding: 2.5rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
+        .contact-node:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--codedex-black);
+        }
+
+        .contact-node-icon {
+            width: 48px; height: 48px;
+            background-color: var(--codedex-mint);
+            border: 2px solid var(--codedex-black);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Press Start 2P', cursive; font-size: 0.65rem;
+            color: var(--codedex-black); border-radius: 8px; flex-shrink: 0;
+        }
+
+        .contact-node-label {
+            font-family: 'Press Start 2P', cursive; font-size: 0.5rem;
+            color: var(--codedex-text-muted); text-transform: uppercase;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-node-value { font-size: 1.1rem; color: var(--codedex-black); font-weight: 600; }
+        .contact-node-value a { color: var(--codedex-black); text-decoration: none; }
+        .contact-node-value a:hover { color: var(--codedex-salmon); }
+
+        /* ── Mini Game ── */
+        .game-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .game-container {
             position: relative;
-            transition: all 0.3s ease;
+            background: var(--codedex-bg-main);
+            border: 3px solid var(--codedex-black);
+            border-radius: 8px;
+            box-shadow: 4px 4px 0px var(--codedex-black);
             overflow: hidden;
         }
-
-        .summary-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 165, 0, 0.05), transparent);
-            animation: sweep 5s infinite linear;
+        .game-container canvas { display: block; }
+        .game-hud {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.55rem;
+        }
+        .game-hud .hud-label { color: var(--codedex-text-muted); margin-right: 0.5rem; }
+        .game-hud .hud-value { color: var(--codedex-salmon); }
+        .game-instructions {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            color: var(--codedex-text-muted);
+            text-align: center;
+            line-height: 2;
+        }
+        .game-instructions kbd {
+            background: var(--codedex-bg-accent);
+            border: 2px solid var(--codedex-border);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            color: var(--codedex-black);
+            font-weight: bold;
         }
 
-        @keyframes sweep {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .summary-card:hover {
-            box-shadow: var(--glow-orange);
-            transform: scale(1.01);
-        }
-
-        .star-decoration {
-            position: absolute;
-            top: -18px;
-            right: 2rem;
-            background: var(--bg-panel);
-            padding: 0.5rem 0.75rem;
-            font-size: 1.5rem;
-            color: var(--warm-orange-neon);
-            animation: star-spin 3s infinite ease-in-out;
-        }
-
-        @keyframes star-spin {
-            0%, 100% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.2); }
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 20px 0 rgba(255, 165, 0, 0); }
-        }
-
-        .footer-info {
+        /* ── Footer ── */
+        .footer-bar {
             margin-top: 2.5rem;
-            padding-top: 1.75rem;
-            border-top: 2px solid var(--border-light);
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--codedex-bg-accent);
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-family: 'Press Start 2P', cursive;
-            font-size: 0.5rem;
-            color: var(--text-muted);
+            font-size: 0.55rem;
+            color: var(--codedex-text-muted);
             flex-wrap: wrap;
-            gap: 1.25rem;
+            gap: 1rem;
+        }
+        .online-indicator { display: flex; align-items: center; gap: 0.5rem; }
+        .online-dot {
+            width: 10px; height: 10px;
+            background-color: var(--codedex-mint);
+            border-radius: 50%;
+            border: 2px solid var(--codedex-black);
+            animation: pulseOnline 1.5s infinite;
+        }
+        @keyframes pulseOnline {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 230, 153, 0.7); }
+            50% { box-shadow: 0 0 10px 5px rgba(0, 230, 153, 0); }
         }
 
-        .status-indicator {
+        /* Solid Toast Alerts */
+        .toast-popup {
+            position: fixed;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--codedex-yellow);
+            color: var(--codedex-black);
+            border: 3px solid var(--codedex-black);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.65rem;
+            font-weight: bold;
+            box-shadow: 4px 4px 0px var(--codedex-black);
+            z-index: 10000;
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .status-dot {
-            width: 12px;
-            height: 12px;
-            background: #44ff44;
-            border-radius: 50%;
-            animation: status-pulse 1.5s infinite;
-        }
+        .toast-popup.visible { bottom: 40px; }
 
-        @keyframes status-pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(68, 255, 68, 0.7); }
-            50% { box-shadow: 0 0 10px 5px rgba(68, 255, 68, 0); }
-        }
-
-        .game-over-text {
-            animation: glitch 2s infinite;
-        }
-
-        /* Secret Konami Code Easter Egg */
-        .konami-activated {
-            animation: rainbow-bg 2s infinite;
-        }
-
-        @keyframes rainbow-bg {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-
-        /* Achievement Popup */
-        .achievement-popup {
-            position: fixed;
+        /* Audio Control Toggles */
+        .audio-node-btn {
+            position: absolute;
             top: 20px;
-            right: -400px;
-            background: var(--bg-panel);
-            border: 3px solid var(--warm-orange-neon);
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            z-index: 10000;
-            transition: right 0.5s ease;
-            box-shadow: var(--glow-orange);
-        }
-
-        .achievement-popup.show {
-            right: 20px;
-        }
-
-        .achievement-icon {
-            font-size: 2rem;
-            animation: bounce-small 0.5s infinite;
-        }
-
-        @keyframes bounce-small {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .achievement-text {
+            left: 20px;
+            z-index: 200;
+            background-color: var(--codedex-bg-surface);
+            border: 2px solid var(--codedex-border);
+            color: var(--codedex-black);
+            padding: 0.4rem 0.8rem;
             font-family: 'Press Start 2P', cursive;
-        }
-
-        .achievement-title {
-            font-size: 0.6rem;
-            color: var(--warm-orange-neon);
-            margin-bottom: 0.3rem;
-        }
-
-        .achievement-desc {
-            font-size: 0.5rem;
-            color: var(--text-secondary);
-        }
-
-        /* Sound Toggle */
-        .sound-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: var(--bg-panel);
-            border: 3px solid var(--warm-orange-neon);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 0.55rem;
+            border-radius: 4px;
             cursor: pointer;
-            z-index: 1001;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
+            box-shadow: 2px 2px 0px var(--codedex-black);
         }
 
-        .sound-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: var(--glow-orange);
+        .audio-node-btn:hover {
+            background-color: var(--codedex-bg-accent);
         }
 
-        @media (max-width: 1200px) {
-            .game-console {
-                height: 92vh;
-            }
-
-            .grid-layout,
-            .tech-grid {
-                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            }
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .missions-grid, .skills-grid { grid-template-columns: 1fr; }
+            .academic-grid { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-                font-size: 15px;
-            }
-
-            .game-console {
-                height: 94vh;
-                max-width: 100%;
-                border-radius: 12px;
-            }
-
-            .screen {
-                padding: 1.5rem;
-            }
-
-            .header-bar {
-                flex-direction: column;
-                gap: 1.25rem;
-                text-align: center;
-                padding: 1.25rem;
-            }
-
-            .contact-mini {
-                justify-content: center;
-                gap: 0.5rem;
-            }
-
-            .contact-mini span {
-                font-size: 0.85rem;
-                padding: 0.35rem 0.6rem;
-            }
-
-            .menu-nav {
-                gap: 0.5rem;
-            }
-
-            .menu-btn {
-                font-size: 0.5rem;
-                padding: 0.8rem 1.2rem;
-            }
-
-            .grid-layout,
-            .tech-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-row {
-                gap: 1rem;
-            }
-
-            .stat-box {
-                min-width: 120px;
-                padding: 1.25rem 1.5rem;
-            }
-
-            .stat-value {
-                font-size: 1.5rem;
-            }
-
-            .footer-info {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.75rem;
-            }
-
-            .exp-header {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .exp-date {
-                align-self: flex-start;
-            }
-
-            .keyboard-hint {
-                display: none;
-            }
-
-            .boot-logo {
-                font-size: 1.2rem;
-            }
-
-            .boot-progress {
-                width: 200px;
-            }
+            body { padding: 1rem; font-size: 14px; }
+            .codedex-header { flex-direction: column; text-align: center; }
+            .comms-node { flex-direction: row; justify-content: center; }
+            .tab-link { font-size: 0.45rem; padding: 1rem 1.2rem; }
+            .panel { padding: 1.5rem; }
+            .panel-heading { font-size: 0.75rem; }
+            .stat-card { min-width: 100px; padding: 1rem 0.75rem; }
+            .stat-card .val { font-size: 1.3rem; }
+            .footer-bar { flex-direction: column; text-align: center; }
+            .game-container canvas { width: 100%; height: auto; }
+            .missions-grid { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 480px) {
-            body {
-                padding: 0.5rem;
-                font-size: 14px;
-            }
-
-            .screen {
-                padding: 1rem;
-            }
-
-            .card,
-            .tech-card,
-            .exp-item,
-            .contact-item {
-                padding: 1.25rem;
-            }
-
-            .summary-card {
-                padding: 1.5rem;
-            }
-
-            .player-avatar {
-                width: 50px;
-                height: 50px;
-                font-size: 0.75rem;
-            }
-
-            .player-name {
-                font-size: 0.8rem;
-            }
-
-            .header-bar {
-                font-size: 0.9rem;
-            }
-
-            .contact-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 0.6rem;
-            }
-
-            .menu-btn {
-                padding: 0.7rem 1rem;
-                font-size: 0.45rem;
-            }
-
-            .panel-title {
-                font-size: 0.85rem;
-                margin-bottom: 1.5rem;
-            }
+            body { padding: 0.5rem; font-size: 13px; }
+            .panel { padding: 1rem; }
+            .log-item, .mission-card, .skills-category-card,
+            .contact-node, .academic-card { padding: 1.25rem; }
+            .summary-blurb { padding: 1.25rem; }
+            .avatar-block { width: 50px; height: 50px; font-size: 0.75rem; }
+            .user-title-area h1 { font-size: 0.85rem; }
+            .tab-link { padding: 0.75rem 0.9rem; font-size: 0.4rem; }
+            .skills-grid, .missions-grid, .academic-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 
 <body>
-    <!-- Boot Screen -->
-    <div class="boot-screen" id="bootScreen">
-        <div class="boot-logo">PORTFOLIO v2.0</div>
-        <div class="boot-text">Initializing system...</div>
-        <div class="boot-text">Loading player data...</div>
-        <div class="boot-text">Mounting skill modules...</div>
-        <div class="boot-text">Establishing connection...</div>
-        <div class="boot-text">System ready.</div>
-        <div class="boot-progress">
-            <div class="boot-progress-bar"></div>
-        </div>
-        <div class="boot-prompt">PRESS ANY KEY TO START</div>
-    </div>
+    <div class="codedex-wrapper">
 
-    <!-- CRT Overlay -->
-    <div class="crt-overlay"></div>
+        <!-- ── Audio Toggle ── -->
+        <button class="audio-node-btn" id="audioToggle" title="Toggle SFX">🔊 SFX</button>
 
-    <!-- Animated Stars Background -->
-    <div class="stars" id="stars"></div>
-
-    <!-- Floating Pixels -->
-    <div class="floating-pixels" id="floatingPixels"></div>
-
-    <!-- Achievement Popup -->
-    <div class="achievement-popup" id="achievementPopup">
-        <div class="achievement-icon">*</div>
-        <div class="achievement-text">
-            <div class="achievement-title">ACHIEVEMENT UNLOCKED</div>
-            <div class="achievement-desc" id="achievementDesc">Welcome Explorer!</div>
-        </div>
-    </div>
-
-    <!-- Sound Toggle -->
-    <div class="sound-toggle" id="soundToggle" title="Toggle Sound Effects">
-        <span id="soundIcon">*</span>
-    </div>
-
-    <div class="game-console screen-flicker" id="gameConsole">
-        <!-- Arcade LEDs -->
-        <div class="arcade-decoration">
-            <div class="arcade-led red"></div>
-            <div class="arcade-led yellow"></div>
-            <div class="arcade-led green"></div>
+        <!-- ── Header ── -->
+        <div class="codedex-header">
+            <div class="profile-container">
+                <div class="avatar-block" id="avatarBlock">SR</div>
+                <div class="user-title-area">
+                    <h1>Syahrul Al-Rasyid</h1>
+                    <span class="rank-badge">ENG SQUAD LEAD</span>
+                </div>
+            </div>
+            <div class="comms-node">
+                <span class="comms-link">📍 Indonesia</span>
+                <a class="comms-link" href="https://wa.me/6285954590588" target="_blank">📱 WhatsApp</a>
+            </div>
         </div>
 
-        <div class="screen">
-            <div class="header-bar">
-                <div class="player-info">
-                    <div class="player-avatar" id="playerAvatar">P1</div>
+        <!-- ── Progress HUD ── -->
+        <div class="dashboard-hud">
+            <div class="hud-meta">
+                <span>XP TO NEXT LEVEL</span>
+                <span>88%</span>
+            </div>
+            <div class="hud-progress-container">
+                <div class="hud-progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- ── Stats Grid ── -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="val">7+</div>
+                <div class="lbl">Years EXP</div>
+            </div>
+            <div class="stat-card">
+                <div class="val">18+</div>
+                <div class="lbl">Projects</div>
+            </div>
+            <div class="stat-card">
+                <div class="val">8</div>
+                <div class="lbl">Companies</div>
+            </div>
+            <div class="stat-card">
+                <div class="val">12</div>
+                <div class="lbl">Squad Size</div>
+            </div>
+        </div>
+
+        <!-- ── Navigation Tabs ── -->
+        <nav class="tab-router">
+            <button class="tab-link active" data-panel="overview">Overview</button>
+            <button class="tab-link" data-panel="skills">Arsenal</button>
+            <button class="tab-link" data-panel="projects">Missions</button>
+            <button class="tab-link" data-panel="experience">Campaign</button>
+            <button class="tab-link" data-panel="contact">Connect</button>
+            <button class="tab-link" data-panel="minigame">MiniGame</button>
+        </nav>
+
+        <!-- ═══════════════ OVERVIEW ═══════════════ -->
+        <div id="overview" class="panel active">
+            <h2 class="panel-heading">PLAYER PROFILE</h2>
+
+            <div class="summary-blurb">
+                <p style="margin-bottom: 1.25rem;">
+                    <strong>Engineering Squad Lead</strong> with 7+ years across the full stack — from <strong>Cloud Infrastructure</strong> and <strong>Security Architecture</strong> to <strong>Backend Systems</strong> and <strong>Team Leadership</strong>. Currently directing a 12-person cross-functional delivery squad at Indonesia's largest logistics group.
+                </p>
+                <p>
+                    Proven ability to bridge software engineering, security operations (DevSecOps), and people leadership. Expert in deploying local LLMs, orchestrating secure RAG pipelines, and automating complex enterprise workflows — all while building high-trust, high-performance engineering teams.
+                </p>
+            </div>
+
+            <h2 class="panel-heading">CURRENT MISSION</h2>
+            <div class="mission-card highlighted" style="margin-bottom: 1.5rem;">
+                <div class="mission-card-title">IRON BIRD LOGISTICS (BLUE BIRD GROUP)</div>
+                <div class="mission-card-subtitle">Technical Lead & Engineering Squad Lead</div>
+                <p class="mission-card-content" style="margin-top: 0.75rem;">
+                    Directing a 12-person cross-functional squad. Spearheading the architectural migration from legacy monoliths to decoupled microservices, designing core logistics domain engines, and establishing engineering guardrails across CI/CD, messaging, and compliance standards.
+                </p>
+            </div>
+        </div>
+
+        <!-- ═══════════════ SKILLS ═══════════════ -->
+        <div id="skills" class="panel">
+            <h2 class="panel-heading">TECHNICAL ARSENAL</h2>
+            <div class="skills-grid">
+                <div class="skills-category-card">
+                    <div class="skills-title">Security & DevSecOps</div>
+                    <div class="tag-cloud">
+                        <span class="block-tag">Data Encryption (AES/RSA/Vault)</span>
+                        <span class="block-tag">SIEM (Wazuh/ELK)</span>
+                        <span class="block-tag">Vulnerability Mgmt (Nessus)</span>
+                        <span class="block-tag">OWASP</span>
+                        <span class="block-tag">SNAP BI</span>
+                    </div>
+                </div>
+                <div class="skills-category-card">
+                    <div class="skills-title">AI & ML Infrastructure</div>
+                    <div class="tag-cloud">
+                        <span class="block-tag">Local LLM Deployment</span>
+                        <span class="block-tag">RAG Pipelines</span>
+                        <span class="block-tag">Computer Vision</span>
+                        <span class="block-tag">Vector DBs</span>
+                        <span class="block-tag">CUDA/GPU</span>
+                    </div>
+                </div>
+                <div class="skills-category-card">
+                    <div class="skills-title">Backend & Systems</div>
+                    <div class="tag-cloud">
+                        <span class="block-tag">Go (Golang)</span>
+                        <span class="block-tag">Python</span>
+                        <span class="block-tag">.NET Core</span>
+                        <span class="block-tag">gRPC</span>
+                        <span class="block-tag">RabbitMQ</span>
+                        <span class="block-tag">Distributed Systems</span>
+                    </div>
+                </div>
+                <div class="skills-category-card">
+                    <div class="skills-title">Infrastructure</div>
+                    <div class="tag-cloud">
+                        <span class="block-tag">Kubernetes</span>
+                        <span class="block-tag">Docker</span>
+                        <span class="block-tag">Linux</span>
+                        <span class="block-tag">AWS</span>
+                        <span class="block-tag">GCP</span>
+                        <span class="block-tag">GitLab CI/CD</span>
+                    </div>
+                </div>
+                <div class="skills-category-card">
+                    <div class="skills-title">Databases</div>
+                    <div class="tag-cloud">
+                        <span class="block-tag">MySQL</span>
+                        <span class="block-tag">PostgreSQL</span>
+                        <span class="block-tag">Redis</span>
+                        <span class="block-tag">MongoDB</span>
+                        <span class="block-tag">Elasticsearch</span>
+                        <span class="block-tag">Oracle</span>
+                    </div>
+                </div>
+                <div class="skills-category-card">
+                    <div class="skills-title">Automation</div>
+                    <div class="tag-cloud">
+                        <span class="block-tag">n8n Workflows</span>
+                        <span class="block-tag">Webhooks</span>
+                        <span class="block-tag">Shuffle</span>
+                        <span class="block-tag">CI/CD Pipelines</span>
+                    </div>
+                </div>
+                <div class="skills-category-card">
+                    <div class="skills-title">APIs & Protocols</div>
+                    <div class="tag-cloud">
+                        <span class="block-tag">REST</span>
+                        <span class="block-tag">GraphQL</span>
+                        <span class="block-tag">gRPC</span>
+                        <span class="block-tag">Protobuf</span>
+                        <span class="block-tag">OpenAPI</span>
+                    </div>
+                </div>
+                <div class="skills-category-card">
+                    <div class="skills-title">Engineering Practices</div>
+                    <div class="tag-cloud">
+                        <span class="block-tag">TDD</span>
+                        <span class="block-tag">Domain Driven Design</span>
+                        <span class="block-tag">Microservices</span>
+                        <span class="block-tag">Code Review Standards</span>
+                        <span class="block-tag">Squad Leadership</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════ PROJECTS ═══════════════ -->
+        <div id="projects" class="panel">
+            <h2 class="panel-heading">FEATURED MISSIONS</h2>
+            <div class="missions-grid">
+                <div class="mission-card highlighted">
+                    <div class="mission-card-title">LOGISTICS MICROSERVICES MIGRATION</div>
+                    <div class="mission-card-subtitle">Iron Bird Logistics (Blue Bird Group)</div>
+                    <p class="mission-card-content">
+                        Led architectural migration of legacy monoliths into decoupled microservices. Designed Master Contract and Booking Order core services with optimized vendor allocation and dynamic pricing.
+                    </p>
+                    <div class="mission-card-meta">Architecture serving Indonesia's largest logistics fleet</div>
+                    <div class="tag-cloud" style="margin-top: 0.75rem;">
+                        <span class="block-tag">Go</span><span class="block-tag">gRPC</span><span class="block-tag">RabbitMQ</span><span class="block-tag">Microservices</span>
+                    </div>
+                </div>
+                <div class="mission-card highlighted">
+                    <div class="mission-card-title">FALLBACK COSTING ENGINE (TMS)</div>
+                    <div class="mission-card-subtitle">Iron Bird Logistics</div>
+                    <p class="mission-card-content">
+                        Authored the "Fallback Costing" engine for Transportation Management System, automating complex logistics cost matrices to eliminate revenue leakage.
+                    </p>
+                    <div class="mission-card-meta">Eliminated revenue leakage on unmapped/broken routes</div>
+                    <div class="tag-cloud" style="margin-top: 0.75rem;">
+                        <span class="block-tag">Go</span><span class="block-tag">Domain Design</span><span class="block-tag">Cost Algorithms</span>
+                    </div>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-card-title">SECURE LOCAL LLM & RAG</div>
+                    <p class="mission-card-content">
+                        Self-hosted Large Language Models on private infrastructure. Built Retrieval-Augmented Generation pipelines for secure internal document querying with complete data sovereignty.
+                    </p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-card-title">ENTERPRISE AUTOMATION FRAMEWORK</div>
+                    <p class="mission-card-content">
+                        Complex automation flows using n8n and Shuffle with Webhooks to eliminate manual operational tasks across the organization.
+                    </p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-card-title">APP SECURITY TOOLING & DATA PROTECTION</div>
+                    <div class="mission-card-subtitle">Adira Finance</div>
+                    <p class="mission-card-content">
+                        Data discovery, classification, asset harvesting, and centralized encryption/decryption platforms with custom Vault key management. Reduced manual effort by 85%.
+                    </p>
+                    <div class="tag-cloud" style="margin-top: 0.75rem;">
+                        <span class="block-tag">Go</span><span class="block-tag">ELK</span><span class="block-tag">SIEM</span><span class="block-tag">Bash</span>
+                    </div>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-card-title">AI COMPUTER VISION SYSTEM</div>
+                    <div class="mission-card-subtitle">Confidential Remote Client</div>
+                    <p class="mission-card-content">
+                        End-to-end real-time AI Vision for food quality control. Provisioned bare-metal into optimized AI training environments with >95% accuracy.
+                    </p>
+                    <div class="tag-cloud" style="margin-top: 0.75rem;">
+                        <span class="block-tag">Computer Vision</span><span class="block-tag">CUDA</span><span class="block-tag">Python</span>
+                    </div>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-card-title">CORE BANKING TRANSACTIONS</div>
+                    <div class="mission-card-subtitle">byOrange (Bank Aladin Syariah)</div>
+                    <p class="mission-card-content">
+                        BI Fast payment gateway, recurring transactions, and OpenAPI for Banking as a Service. 10,000+ daily transactions at 99.99% uptime.
+                    </p>
+                    <div class="tag-cloud" style="margin-top: 0.75rem;">
+                        <span class="block-tag">Go</span><span class="block-tag">MySQL</span><span class="block-tag">gRPC</span><span class="block-tag">REST</span>
+                    </div>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-card-title">MONEY MOVEMENT & DIGITAL BANKING</div>
+                    <div class="mission-card-subtitle">KoinWorks NEO</div>
+                    <p class="mission-card-content">
+                        Complex money movement workflows and third-party payment/banking API integrations for the NEO digital banking suite.
+                    </p>
+                    <div class="tag-cloud" style="margin-top: 0.75rem;">
+                        <span class="block-tag">Go</span><span class="block-tag">SQL</span><span class="block-tag">REST</span>
+                    </div>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-card-title">EMPLOYEE MANAGEMENT SYSTEM</div>
+                    <div class="mission-card-subtitle">PT Toray</div>
+                    <p class="mission-card-content">
+                        Standalone .NET Core application for employee work hour tracking and automated payroll calculations.
+                    </p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-card-title">DATA ENGINEERING & ETL</div>
+                    <div class="mission-card-subtitle">PT eBdesk Teknologi</div>
+                    <p class="mission-card-content">
+                        Large-scale ETL pipelines processing millions of records daily with 99.9% accuracy.
+                    </p>
+                    <div class="tag-cloud" style="margin-top: 0.75rem;">
+                        <span class="block-tag">Python</span><span class="block-tag">Go</span><span class="block-tag">MQ</span><span class="block-tag">ETL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════ EXPERIENCE ═══════════════ -->
+        <div id="experience" class="panel">
+            <h2 class="panel-heading">PROFESSIONAL CAMPAIGN</h2>
+
+            <div class="log-item highlighted">
+                <div class="log-header">
                     <div>
-                        <div class="player-name glitch-text">
-                            <span id="typedName"></span><span class="typing-cursor"></span>
-                        </div>
-                        <div class="role-badge">SENIOR AI INFRA & SECURITY ENGINEER</div>
+                        <div class="log-company">Iron Bird Logistics (Blue Bird Group)</div>
+                        <div class="log-role">Technical Lead & Engineering Squad Lead</div>
+                        <div class="log-loc">Jakarta, Indonesia</div>
                     </div>
+                    <div class="log-time">OCT 2025 - PRES</div>
                 </div>
-                <div class="contact-mini">
-                    <span data-tooltip="Indonesia">@ Indonesia</span>
-                    <span><a href="https://wa.me/6285954590588" target="_blank" style="color: inherit; text-decoration: none;">@ WhatsApp</a></span>
+                <div class="log-summary">
+                    Directing delivery execution, cross-functional alignment, and mission-critical systems architecture.
                 </div>
+                <ul class="bullet-stack">
+                    <li><strong>Cross-Functional Squad Leadership:</strong> Serve as Squad Lead directing a high-performing, 12-person cross-functional delivery team (5 Backend, 2 Frontend, 3 QA, 2 Product); partner directly with the Product Lead to align technical roadmaps with core logistics business objectives.</li>
+                    <li><strong>Engineering Management:</strong> Directly manage and mentor a team of 5 Backend Engineers, establishing high-quality engineering guardrails, code review standards, and technical growth paths.</li>
+                    <li><strong>Architecture Modernization:</strong> Spearheaded the architectural migration of legacy monolithic logistics systems into a high-throughput, decoupled microservices topology, design-modeling core services including Master Contract and Booking Order modules to optimize vendor allocation and dynamic pricing.</li>
+                    <li><strong>Domain Engine Design:</strong> Authored and implemented the "Fallback Costing" engine for the Transportation Management System (TMS), automating complex logistics cost matrices (fuel ratios, driver commissions, order type constraints) to eliminate revenue leakage on unmapped or broken routes.</li>
+                    <li><strong>Integration & Compliance Standards:</strong> Dictated enterprise integration patterns by implementing SNAP BI (Standard National Open API Banking Indonesia) signature validation and merchant callback architectures, securing real-time payment gateway flows and webhooks.</li>
+                    <li><strong>High-Throughput Messaging:</strong> Engineered decoupled communication channels between distributed services using RabbitMQ and gRPC, driving down cross-service latency and ensuring data consistency across real-time operations.</li>
+                    <li><strong>DevOps & Observability Guardrails:</strong> Defined organization-wide GitLab CI/CD pipeline blueprints, standardizing containerized deployment workflows and shifting security/testing left to reduce deployment failure rates.</li>
+                </ul>
             </div>
 
-            <div class="keyboard-hint">
-                Use <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> <kbd>5</kbd> or <kbd><-</kbd> <kbd>-></kbd> to navigate
+            <div class="log-item">
+                <div class="log-header">
+                    <div>
+                        <div class="log-company">Confidential Remote Client</div>
+                        <div class="log-role">AI Computer Vision Engineer (Contract)</div>
+                        <div class="log-loc">Middle East (Remote)</div>
+                    </div>
+                    <div class="log-time">JUL 2025 - AUG 2025</div>
+                </div>
+                <div class="log-summary">
+                    End-to-end development of a real-time AI Vision system for food quality control.
+                </div>
+                <ul class="bullet-stack">
+                    <li><strong>Infrastructure Setup:</strong> Provisioned bare-metal servers into fully optimized AI training environments (CUDA, Python venv, GPU allocation).</li>
+                    <li><strong>Model Development:</strong> Trained and deployed custom Computer Vision models for real-time food identification with >95% accuracy.</li>
+                    <li><strong>API Integration:</strong> Designed the inference API layer to serve model results to the frontend in real-time.</li>
+                </ul>
             </div>
 
-            <nav class="menu-nav" id="menuNav">
-                <button class="menu-btn active" data-panel="overview" data-key="1">Overview</button>
-                <button class="menu-btn" data-panel="skills" data-key="2">Skills</button>
-                <button class="menu-btn" data-panel="projects" data-key="3">Projects</button>
-                <button class="menu-btn" data-panel="experience" data-key="4">Experience</button>
-                <button class="menu-btn" data-panel="contact" data-key="5">Contact</button>
-            </nav>
-
-            <div id="overview" class="content-panel active">
-                <div class="panel-title">PLAYER PROFILE</div>
-                
-                <div class="summary-card">
-                    <div class="star-decoration">*</div>
-                    <p class="card-content" style="margin-bottom: 1.5rem; font-size: 1.15rem; position: relative; z-index: 1;">
-                        Results-oriented <strong>Senior Engineer</strong> with 6+ years of experience specializing in <strong>Cloud Infrastructure</strong>, <strong>Security Architecture</strong>, and <strong>Backend Systems</strong>. Expert in securing financial ecosystems and deploying high-performance AI environments from scratch.
-                    </p>
-                    <p class="card-content" style="font-size: 1.15rem; position: relative; z-index: 1;">
-                        Proven ability to bridge gap between software development and security operations (DevSecOps). Experienced in deploying local LLMs, orchestrating secure RAG pipelines, and automating complex enterprise workflows. Combining deep expertise in Go (Golang) with practical implementation of zero-trust security standards.
-                    </p>
+            <div class="log-item">
+                <div class="log-header">
+                    <div>
+                        <div class="log-company">Adira Finance</div>
+                        <div class="log-role">Senior Security Engineer</div>
+                        <div class="log-loc">Jakarta, Indonesia</div>
+                    </div>
+                    <div class="log-time">DEC 2024 - SEP 2025</div>
                 </div>
-
-                <!-- XP Bar -->
-                <div class="xp-bar-container">
-                    <div class="xp-label">
-                        <span>EXPERIENCE LEVEL</span>
-                        <span id="xpPercent">0%</span>
-                    </div>
-                    <div class="xp-bar">
-                        <div class="xp-fill" id="xpFill"></div>
-                    </div>
+                <div class="log-summary">
+                    Spearheaded application security initiatives and data protection strategies for a major financial institution.
                 </div>
-
-                <div class="stats-row">
-                    <div class="stat-box" data-count="6" data-suffix="+">
-                        <div class="stat-value" id="statYears">0</div>
-                        <div class="stat-label">Years EXP</div>
-                    </div>
-                    <div class="stat-box" data-count="15" data-suffix="+">
-                        <div class="stat-value" id="statProjects">0</div>
-                        <div class="stat-label">Projects</div>
-                    </div>
-                    <div class="stat-box" data-count="7" data-suffix="">
-                        <div class="stat-value" id="statCompanies">0</div>
-                        <div class="stat-label">Companies</div>
-                    </div>
-                </div>
-
-                <div class="panel-title" style="margin-top: 2rem;">CURRENT MISSION</div>
-                <div class="card" style="border-color: var(--warm-orange-neon);">
-                    <div class="card-title">ADIRA FINANCE - SENIOR SECURITY ENGINEER</div>
-                    <p class="card-content" style="margin-top: 1rem;">
-                        Spearheading application security initiatives and data protection strategies for a major financial institution. Building enterprise-grade security infrastructure from the ground up.
-                    </p>
-                </div>
+                <ul class="bullet-stack">
+                    <li><strong>Security Architecture:</strong> Architected and deployed a centralized Encryption/Decryption Platform with custom Vault key management, securing sensitive customer data.</li>
+                    <li><strong>Infrastructure Automation:</strong> Built the organization's security monitoring infrastructure from the ground up, automating the deployment of agents (Wazuh, Nessus) across hybrid cloud environments.</li>
+                    <li><strong>Data Protection:</strong> Engineered automated tools for asset harvesting and sensitive data classification (DLP).</li>
+                    <li><strong>SIEM Integration:</strong> Led the integration of ELK Stack for security monitoring, defining detection rules and incident response protocols.</li>
+                    <li>Automated deployment of security agents reducing manual configuration time by 80%.</li>
+                    <li>Designed comprehensive monitoring solutions for security tools, ensuring 99.9% uptime.</li>
+                </ul>
             </div>
 
-            <div id="skills" class="content-panel">
-                <div class="panel-title">TECHNICAL ARSENAL</div>
-                <div class="tech-grid">
-                    <div class="tech-card">
-                        <div class="tech-card-title">Security & DevSecOps</div>
-                        <div class="tech-list">
-                            <span class="tech-tag">Data Encryption (AES/RSA/Vault)</span>
-                            <span class="tech-tag">SIEM (Wazuh/ELK)</span>
-                            <span class="tech-tag">Vulnerability Management (Tenable/Nessus)</span>
-                            <span class="tech-tag">OWASP Standards</span>
-                        </div>
+            <div class="log-item">
+                <div class="log-header">
+                    <div>
+                        <div class="log-company">byOrange (Bank Aladin Syariah)</div>
+                        <div class="log-role">Senior Backend Engineer</div>
+                        <div class="log-loc">Jakarta, Indonesia</div>
                     </div>
-                    <div class="tech-card">
-                        <div class="tech-card-title">AI & ML Infrastructure</div>
-                        <div class="tech-list">
-                            <span class="tech-tag">Local LLM Deployment</span>
-                            <span class="tech-tag">RAG Pipelines</span>
-                            <span class="tech-tag">Computer Vision (Real-time)</span>
-                            <span class="tech-tag">Vector DBs</span>
-                            <span class="tech-tag">CUDA/GPU Optimization</span>
-                        </div>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-card-title">Backend & Systems</div>
-                        <div class="tech-list">
-                            <span class="tech-tag">Go (Golang)</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">.NET Core</span>
-                            <span class="tech-tag">gRPC</span>
-                            <span class="tech-tag">Distributed Systems Design</span>
-                            <span class="tech-tag">High-Concurrency APIs</span>
-                        </div>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-card-title">Infrastructure</div>
-                        <div class="tech-list">
-                            <span class="tech-tag">Kubernetes (K8s)</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Linux Administration</span>
-                            <span class="tech-tag">AWS</span>
-                            <span class="tech-tag">GCP</span>
-                            <span class="tech-tag">Redis</span>
-                        </div>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-card-title">Databases</div>
-                        <div class="tech-list">
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Redis</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Elasticsearch</span>
-                            <span class="tech-tag">Oracle</span>
-                        </div>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-card-title">Automation</div>
-                        <div class="tech-list">
-                            <span class="tech-tag">n8n Workflow Automation</span>
-                            <span class="tech-tag">Webhooks</span>
-                            <span class="tech-tag">Shuffle</span>
-                            <span class="tech-tag">CI/CD Pipelines</span>
-                        </div>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-card-title">APIs & Protocols</div>
-                        <div class="tech-list">
-                            <span class="tech-tag">REST APIs</span>
-                            <span class="tech-tag">GraphQL</span>
-                            <span class="tech-tag">gRPC</span>
-                            <span class="tech-tag">Protobuf</span>
-                            <span class="tech-tag">JSON</span>
-                        </div>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-card-title">Practices</div>
-                        <div class="tech-list">
-                            <span class="tech-tag">TDD</span>
-                            <span class="tech-tag">Integration Testing</span>
-                            <span class="tech-tag">OOP</span>
-                            <span class="tech-tag">Domain Driven Design</span>
-                            <span class="tech-tag">CI/CD</span>
-                        </div>
-                    </div>
+                    <div class="log-time">JUL 2022 - DEC 2024</div>
                 </div>
+                <div class="log-summary">
+                    Core contributor to digital banking transaction systems and BaaS (Banking as a Service) architecture.
+                </div>
+                <ul class="bullet-stack">
+                    <li><strong>Payment Systems:</strong> Engineered the BI-Fast (National Payment Gateway) integration, handling high-throughput money movement with &lt;200ms latency.</li>
+                    <li><strong>BaaS Architecture:</strong> Designed the OpenAPI architecture enabling secure third-party financial integrations.</li>
+                    <li><strong>Reliability:</strong> Implemented comprehensive distributed tracing (Datadog) to reduce MTTR for production incidents.</li>
+                    <li>Architected highly scalable systems processing thousands of transactions daily with zero downtime.</li>
+                    <li>Led integration of multiple third-party payment APIs, ensuring secure and reliable money movement.</li>
+                    <li>Implemented comprehensive unit and integration testing achieving 90%+ code coverage.</li>
+                </ul>
             </div>
 
-            <div id="projects" class="content-panel">
-                <div class="panel-title">FEATURED PROJECTS</div>
-                <div class="grid-layout">
-                    <div class="card" style="border-color: var(--warm-orange-neon);">
-                        <div class="card-title">SECURE LOCAL LLM & RAG IMPLEMENTATION</div>
-                        <p class="card-content" style="margin-bottom: 1rem; font-size: 1.1rem;">
-                            Self-hosted Large Language Models on private infrastructure to ensure data privacy. Built Retrieval-Augmented Generation (RAG) pipelines for secure internal document querying.
-                        </p>
-                        <div class="card-meta">
-                            <span style="color: var(--warm-orange-neon);">*</span> Ensured complete data sovereignty for sensitive enterprise documents
-                        </div>
+            <div class="log-item">
+                <div class="log-header">
+                    <div>
+                        <div class="log-company">KoinWorks</div>
+                        <div class="log-role">Senior Backend Engineer (NEO Banking)</div>
+                        <div class="log-loc">Jakarta, Indonesia</div>
                     </div>
-
-                    <div class="card" style="border-color: var(--warm-orange-neon);">
-                        <div class="card-title">ENTERPRISE AUTOMATION FRAMEWORK</div>
-                        <p class="card-content" style="margin-bottom: 1rem; font-size: 1.1rem;">
-                            Designed complex automation flows using <strong>n8n</strong> and <strong>Shuffle</strong>, integrating Webhooks to eliminate manual operational tasks.
-                        </p>
-                        <div class="card-meta">
-                            <span style="color: var(--warm-orange-neon);">*</span> Streamlined enterprise workflows
-                        </div>
-                    </div>
-
-                    <div class="card" style="border-color: var(--warm-orange-neon);">
-                        <div class="card-title">FULLSTACK EMPLOYEE MANAGEMENT SYSTEM (TORAY)</div>
-                        <p class="card-content" style="margin-bottom: 1rem; font-size: 1.1rem;">
-                            Developed a standalone .NET Core application to track employee work hours and automate payroll calculations.
-                        </p>
-                        <div class="card-meta">
-                            <span style="color: var(--warm-orange-neon);">*</span> Automated payroll processing
-                        </div>
-                    </div>
-
-                    <div class="card" style="border-color: var(--warm-peach);">
-                        <div class="card-title">APPLICATION SECURITY TOOLING & DATA PROTECTION</div>
-                        <div class="card-subtitle">Adira Finance</div>
-                        <p class="card-content" style="margin-bottom: 1rem; font-size: 1.1rem;">
-                            Built comprehensive tools for data discovery, classification, asset harvesting, and centralized encryption/decryption platforms with custom Vault key management.
-                        </p>
-                        <div class="card-meta">
-                            <span style="color: var(--warm-peach);">*</span> Automated security workflows reducing manual effort by 85%
-                        </div>
-                        <div class="tech-list" style="margin-top: 1rem;">
-                            <span class="tech-tag">Go</span>
-                            <span class="tech-tag">Bash</span>
-                            <span class="tech-tag">ELK Stack</span>
-                            <span class="tech-tag">SIEM</span>
-                        </div>
-                    </div>
-
-                    <div class="card" style="border-color: var(--warm-peach);">
-                        <div class="card-title">AI COMPUTER VISION SYSTEM</div>
-                        <div class="card-subtitle">Confidential Remote Client</div>
-                        <p class="card-content" style="margin-bottom: 1rem; font-size: 1.1rem;">
-                            End-to-end development of real-time AI Vision system for food quality control. Provisioned bare-metal servers into fully optimized AI training environments.
-                        </p>
-                        <div class="card-meta">
-                            <span style="color: var(--warm-peach);">*</span> Real-time food identification with >95% accuracy
-                        </div>
-                        <div class="tech-list" style="margin-top: 1rem;">
-                            <span class="tech-tag">Computer Vision</span>
-                            <span class="tech-tag">CUDA</span>
-                            <span class="tech-tag">GPU Optimization</span>
-                            <span class="tech-tag">Python</span>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">CORE BANKING TRANSACTION SYSTEMS</div>
-                        <div class="card-subtitle">byOrange (Bank Aladin Syariah)</div>
-                        <p class="card-content" style="margin-bottom: 1rem; font-size: 1.1rem;">
-                            Delivered high-volume banking transaction systems including BI Fast payment gateway, recurring transactions, and OpenAPI for Banking as a Service.
-                        </p>
-                        <div class="card-meta">
-                            <span style="color: var(--warm-peach);">*</span> Processing 10,000+ transactions daily with 99.99% uptime
-                        </div>
-                        <div class="tech-list" style="margin-top: 1rem;">
-                            <span class="tech-tag">Go</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">REST APIs</span>
-                            <span class="tech-tag">gRPC</span>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">MONEY MOVEMENT & DIGITAL BANKING</div>
-                        <div class="card-subtitle">KoinWorks NEO</div>
-                        <p class="card-content" style="margin-bottom: 1rem; font-size: 1.1rem;">
-                            Developed money movement workflows and integrated with third-party payment and banking APIs for digital banking suite.
-                        </p>
-                        <div class="tech-list" style="margin-top: 1rem;">
-                            <span class="tech-tag">Go</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">REST APIs</span>
-                            <span class="tech-tag">Unit Testing</span>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">E-COMMERCE ORDER & PAYMENT</div>
-                        <div class="card-subtitle">PT Indo Teknologi Cemerlang</div>
-                        <p class="card-content" style="margin-bottom: 1rem; font-size: 1.1rem;">
-                            Built robust order management and payment systems for Aroma Medan e-commerce platform.
-                        </p>
-                        <div class="tech-list" style="margin-top: 1rem;">
-                            <span class="tech-tag">Go</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">REST APIs</span>
-                            <span class="tech-tag">Payment Gateway</span>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">CONSTRUCTION INDUSTRY MONITORING</div>
-                        <div class="card-subtitle">PT Empore Hezer Tama</div>
-                        <p class="card-content" style="margin-bottom: 1rem; font-size: 1.1rem;">
-                            Developed system monitoring applications for construction industry clients with real-time project tracking.
-                        </p>
-                        <div class="tech-list" style="margin-top: 1rem;">
-                            <span class="tech-tag">Go</span>
-                            <span class="tech-tag">GraphQL</span>
-                            <span class="tech-tag">gRPC</span>
-                            <span class="tech-tag">Real-time</span>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">LARGE-SCALE DATA ENGINEERING & ETL</div>
-                        <div class="card-subtitle">PT eBdesk Teknologi</div>
-                        <p class="card-content" style="margin-bottom: 1rem; font-size: 1.1rem;">
-                            Built and maintained large-scale ETL pipelines, data processing, and monitoring systems.
-                        </p>
-                        <div class="tech-list" style="margin-top: 1rem;">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Go</span>
-                            <span class="tech-tag">Message Queues</span>
-                            <span class="tech-tag">NoSQL</span>
-                            <span class="tech-tag">ETL</span>
-                        </div>
-                    </div>
+                    <div class="log-time">MAY 2021 - JUN 2022</div>
                 </div>
+                <ul class="bullet-stack">
+                    <li><strong>Financial Logic:</strong> Developed complex money movement workflows and ledger systems for the NEO digital banking suite.</li>
+                    <li><strong>Code Quality:</strong> Championed Test-Driven Development (TDD) practices, significantly reducing regression bugs in production.</li>
+                    <li>Key contributor to KoinWorks NEO digital banking product suite.</li>
+                    <li>Built high-performance backend services using Go, SQL, and Git.</li>
+                </ul>
             </div>
 
-            <div id="experience" class="content-panel">
-                <div class="panel-title">PROFESSIONAL EXPERIENCE</div>
-                
-                <div class="exp-item current">
-                    <div class="current-badge">NOW PLAYING</div>
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-company">ADIRA FINANCE</div>
-                            <div class="exp-role">Senior Security Engineer</div>
-                            <div class="exp-location">Jakarta, Indonesia</div>
-                        </div>
-                        <div class="exp-date">Dec 2024 - Present</div>
+            <div class="log-item">
+                <div class="log-header">
+                    <div>
+                        <div class="log-company">PT Indo Teknologi Cemerlang</div>
+                        <div class="log-role">Backend Engineer</div>
+                        <div class="log-loc">Jakarta, Indonesia</div>
                     </div>
-                    <p class="card-content" style="margin-bottom: 1rem; font-style: italic; color: var(--text-muted); font-size: 1.1rem;">
-                        Spearheaded application security initiatives and data protection strategies for a major financial institution.
-                    </p>
-                    <ul class="exp-achievements">
-                        <li><strong>Security Architecture:</strong> Architected and deployed a centralized <strong>Encryption/Decryption Platform</strong> with custom Vault key management, securing sensitive customer data.</li>
-                        <li><strong>Infrastructure Automation:</strong> Built the organization's security monitoring infrastructure from the ground up, automating the deployment of agents (Wazuh, Nessus) across hybrid cloud environments.</li>
-                        <li><strong>Data Protection:</strong> Engineered automated tools for asset harvesting and sensitive data classification (DLP).</li>
-                        <li><strong>SIEM Integration:</strong> Led the integration of ELK Stack for security monitoring, defining detection rules and incident response protocols.</li>
-                        <li>Designed comprehensive monitoring solutions for security tools, ensuring 99.9% uptime and rapid threat detection.</li>
-                        <li>Automated deployment of security agents (Tenable Nessus, Wazuh) reducing manual configuration time by 80%.</li>
-                    </ul>
+                    <div class="log-time">FEB 2021 - MAY 2021</div>
                 </div>
-
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-company">CONFIDENTIAL REMOTE CLIENT</div>
-                            <div class="exp-role">AI Computer Vision Engineer (Contract)</div>
-                            <div class="exp-location">Middle East (Remote)</div>
-                        </div>
-                        <div class="exp-date">Jul 2025 - Aug 2025</div>
-                    </div>
-                    <p class="card-content" style="margin-bottom: 1rem; font-style: italic; color: var(--text-muted); font-size: 1.1rem;">
-                        End-to-end development of a real-time AI Vision system for food quality control.
-                    </p>
-                    <ul class="exp-achievements">
-                        <li><strong>Infrastructure Setup:</strong> Provisioned "Blank Slate" bare-metal servers into fully optimized AI training environments (CUDA, Python venv, GPU allocation).</li>
-                        <li><strong>Model Development:</strong> Trained and deployed custom Computer Vision models for real-time food identification with >95% accuracy.</li>
-                        <li><strong>API Integration:</strong> Designed the inference API layer to serve model results to the frontend in real-time.</li>
-                    </ul>
-                </div>
-
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-company">BYORANGE (BANK ALADIN SYARIAH)</div>
-                            <div class="exp-role">Senior Backend Engineer</div>
-                            <div class="exp-location">Jakarta, Indonesia</div>
-                        </div>
-                        <div class="exp-date">Jul 2022 - Dec 2024</div>
-                    </div>
-                    <p class="card-content" style="margin-bottom: 1rem; font-style: italic; color: var(--text-muted); font-size: 1.1rem;">
-                        Core contributor to digital banking transaction systems and BaaS (Banking as a Service) architecture.
-                    </p>
-                    <ul class="exp-achievements">
-                        <li><strong>Payment Systems:</strong> Engineered the <strong>BI-Fast</strong> (National Payment Gateway) integration, handling high-throughput money movement with <200ms latency.</li>
-                        <li><strong>BaaS Architecture:</strong> Designed the OpenAPI architecture enabling secure third-party financial integrations.</li>
-                        <li><strong>Reliability:</strong> Implemented comprehensive distributed tracing (Datadog) to reduce MTTR for production incidents.</li>
-                        <li>Architected highly scalable systems processing thousands of transactions daily with zero downtime.</li>
-                        <li>Led integration of multiple third-party payment APIs, ensuring secure and reliable money movement.</li>
-                        <li>Implemented comprehensive unit and integration testing achieving 90%+ code coverage.</li>
-                    </ul>
-                </div>
-
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-company">KoinWorks</div>
-                            <div class="exp-role">Senior Backend Engineer (NEO Banking)</div>
-                            <div class="exp-location">Jakarta, Indonesia</div>
-                        </div>
-                        <div class="exp-date">May 2021 - Jun 2022</div>
-                    </div>
-                    <ul class="exp-achievements">
-                        <li><strong>Financial Logic:</strong> Developed complex money movement workflows and ledger systems for the "NEO" digital banking suite.</li>
-                        <li><strong>Code Quality:</strong> Championed Test-Driven Development (TDD) practices, significantly reducing regression bugs in production.</li>
-                        <li>Key contributor to KoinWorks NEO digital banking product suite.</li>
-                        <li>Built high-performance backend services using Go, SQL, and Git.</li>
-                    </ul>
-                </div>
-
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-company">PT INDO TEKNOLOGI CEMERLANG</div>
-                            <div class="exp-role">Backend Engineer</div>
-                            <div class="exp-location">Jakarta, Indonesia</div>
-                        </div>
-                        <div class="exp-date">Feb 2021 - May 2021</div>
-                    </div>
-                    <ul class="exp-achievements">
-                        <li>Built Order Management Systems (OMS) and payment gateway integrations using Go.</li>
-                        <li>Developed order and payment systems for Aroma Medan e-commerce platform.</li>
-                        <li>Designed and implemented RESTful APIs with Go and SQL.</li>
-                    </ul>
-                </div>
-
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-company">PT EMPORE HEZER TAMA</div>
-                            <div class="exp-role">Backend Engineer</div>
-                            <div class="exp-location">Jakarta, Indonesia</div>
-                        </div>
-                        <div class="exp-date">Oct 2020 - Feb 2021</div>
-                    </div>
-                    <ul class="exp-achievements">
-                        <li>Built system monitoring applications for construction industry clients.</li>
-                        <li>Developed GraphQL and RPC APIs for real-time data access.</li>
-                        <li>Implemented comprehensive unit testing ensuring code reliability.</li>
-                    </ul>
-                </div>
-
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="exp-company">PT EBDESK TEKNOLOGI</div>
-                            <div class="exp-role">Data Engineer</div>
-                            <div class="exp-location">Jakarta, Indonesia</div>
-                        </div>
-                        <div class="exp-date">Oct 2019 - Oct 2020</div>
-                    </div>
-                    <ul class="exp-achievements">
-                        <li><strong>Big Data Pipelines:</strong> Engineered large-scale ETL pipelines using Python and Go, processing terabytes of data.</li>
-                        <li>Specialized in large-scale data processing and ETL pipelines.</li>
-                        <li>Designed and maintained robust data pipelines using Python, Go, message queues, and multiple databases.</li>
-                        <li>Processed millions of records daily with 99.9% accuracy.</li>
-                    </ul>
-                </div>
+                <ul class="bullet-stack">
+                    <li>Built Order Management Systems (OMS) and payment gateway integrations using Go.</li>
+                    <li>Developed order and payment systems for Aroma Medan e-commerce platform.</li>
+                    <li>Designed and implemented RESTful APIs with Go and SQL.</li>
+                </ul>
             </div>
 
-            <div id="contact" class="content-panel">
-                <div class="panel-title">CONNECT</div>
-                <div class="contact-list">
-                    <div class="contact-item" onclick="copyToClipboard('syahrull75.sar@gmail.com', 'Email')">
-                        <div class="contact-icon">@</div>
-                        <div>
-                            <div class="contact-label">Email (Click to Copy)</div>
-                            <div class="contact-value">
-                                <a href="mailto:syahrull75.sar@gmail.com">syahrull75.sar@gmail.com</a>
-                            </div>
-                        </div>
+            <div class="log-item">
+                <div class="log-header">
+                    <div>
+                        <div class="log-company">PT Empore Hezer Tama</div>
+                        <div class="log-role">Backend Engineer</div>
+                        <div class="log-loc">Jakarta, Indonesia</div>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">#</div>
-                        <div>
-                            <div class="contact-label">WhatsApp</div>
-                            <div class="contact-value">
-                                <a href="https://wa.me/6285954590588" target="_blank">+62 859-5459-0588</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon"><></div>
-                        <div>
-                            <div class="contact-label">GitHub</div>
-                            <div class="contact-value">
-                                <a href="https://github.com/syahrulrasyid" target="_blank">github.com/syahrulrasyid</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">*</div>
-                        <div>
-                            <div class="contact-label">Location</div>
-                            <div class="contact-value">Indonesia (Open to Remote)</div>
-                        </div>
-                    </div>
+                    <div class="log-time">OCT 2020 - FEB 2021</div>
                 </div>
+                <ul class="bullet-stack">
+                    <li>Built system monitoring applications for construction industry clients.</li>
+                    <li>Developed GraphQL and RPC APIs for real-time data access.</li>
+                    <li>Implemented comprehensive unit testing ensuring code reliability.</li>
+                </ul>
             </div>
 
-            <div class="footer-info">
-                <div>2026 SYAHRUL AL-RASYID</div>
-                <div class="status-indicator">
-                    <div class="status-dot"></div>
-                    <span>ONLINE</span>
+            <div class="log-item">
+                <div class="log-header">
+                    <div>
+                        <div class="log-company">PT eBdesk Teknologi</div>
+                        <div class="log-role">Data Engineer</div>
+                        <div class="log-loc">Jakarta, Indonesia</div>
+                    </div>
+                    <div class="log-time">OCT 2019 - OCT 2020</div>
                 </div>
-                <div class="game-over-text">PRESS START</div>
+                <ul class="bullet-stack">
+                    <li><strong>Big Data Pipelines:</strong> Engineered large-scale ETL pipelines using Python and Go, processing terabytes of data.</li>
+                    <li>Specialized in large-scale data processing and ETL pipelines.</li>
+                    <li>Designed and maintained robust data pipelines using Python, Go, message queues, and multiple databases.</li>
+                    <li>Processed millions of records daily with 99.9% accuracy.</li>
+                </ul>
             </div>
         </div>
+
+        <!-- ═══════════════ CONTACT ═══════════════ -->
+        <div id="contact" class="panel">
+            <h2 class="panel-heading">ESTABLISH CONNECTION</h2>
+            <div class="contact-stack">
+                <div class="contact-node">
+                    <div class="contact-node-icon">@</div>
+                    <div>
+                        <div class="contact-node-label">Email</div>
+                        <div class="contact-node-value"><a href="mailto:syahrull75.sar@gmail.com">syahrull75.sar@gmail.com</a></div>
+                    </div>
+                </div>
+                <div class="contact-node">
+                    <div class="contact-node-icon">#</div>
+                    <div>
+                        <div class="contact-node-label">WhatsApp</div>
+                        <div class="contact-node-value"><a href="https://wa.me/6285954590588" target="_blank">+62 859-5459-0588</a></div>
+                    </div>
+                </div>
+                <div class="contact-node">
+                    <div class="contact-node-icon">&lt;&gt;</div>
+                    <div>
+                        <div class="contact-node-label">GitHub</div>
+                        <div class="contact-node-value"><a href="https://github.com/syahrulrasyid" target="_blank">github.com/syahrulrasyid</a></div>
+                    </div>
+                </div>
+                <div class="contact-node">
+                    <div class="contact-node-icon">📍</div>
+                    <div>
+                        <div class="contact-node-label">Location</div>
+                        <div class="contact-node-value">Indonesia (Open to Remote)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════ MINI GAME ═══════════════ -->
+        <div id="minigame" class="panel">
+            <h2 class="panel-heading">BUG DEFENDERS</h2>
+            <div class="game-wrapper">
+                <div class="game-hud">
+                    <span><span class="hud-label">SCORE</span><span class="hud-value" id="gameScore">0</span></span>
+                    <span><span class="hud-label">WAVE</span><span class="hud-value" id="gameWave">1</span></span>
+                    <span><span class="hud-label">LIVES</span><span class="hud-value" id="gameLives">♥♥♥</span></span>
+                    <span><span class="hud-label">HI-SCORE</span><span class="hud-value" id="gameHiScore">0</span></span>
+                </div>
+                <div class="game-container" id="gameContainer">
+                    <canvas id="gameCanvas"></canvas>
+                </div>
+                <div class="game-instructions">
+                    <kbd>←</kbd> <kbd>→</kbd> MOVE &nbsp; <kbd>SPACE</kbd> FIRE &nbsp; <kbd>P</kbd> PAUSE &nbsp; <kbd>R</kbd> RESTART
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Footer ── -->
+        <div class="footer-bar">
+            <div>© 2026 SYAHRUL AL-RASYID</div>
+            <div class="online-indicator">
+                <div class="online-dot"></div>
+                <span>ONLINE</span>
+            </div>
+            <div>PRESS START</div>
+        </div>
     </div>
+
+    <!-- ── Toast Popup ── -->
+    <div class="toast-popup" id="toastPopup"><span id="toastMsg"></span></div>
 
     <script>
-        // Audio Context for retro sounds
-        let audioContext;
-        let soundEnabled = true;
+    // ── Toast System ──
+    let toastTimer;
+    function showToast(msg) {
+        const toast = document.getElementById('toastPopup');
+        const msgEl = document.getElementById('toastMsg');
+        msgEl.textContent = msg;
+        toast.classList.add('visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('visible'), 2000);
+    }
 
-        function initAudio() {
-            audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        }
+    // ── Avatar Click ──
+    document.getElementById('avatarBlock').addEventListener('click', function() {
+        const msgs = [
+            '🟢 System Nominal',
+            '⚡ All Cores Engaged',
+            '🛡️ Firewall Active',
+            '📡 Uplink Stable',
+            '💾 Data Integrity: 100%',
+            '🔐 Encryption Verified',
+            '🏆 High Score: 9999'
+        ];
+        showToast(msgs[Math.floor(Math.random() * msgs.length)]);
+    });
 
-        function playSound(type) {
-            if (!soundEnabled || !audioContext) return;
-            
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            switch(type) {
-                case 'click':
-                    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-                    oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.1);
-                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-                    oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + 0.1);
-                    break;
-                case 'hover':
-                    oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
-                    gainNode.gain.setValueAtTime(0.05, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
-                    oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + 0.05);
-                    break;
-                case 'achievement':
-                    const notes = [523, 659, 784, 1047];
-                    notes.forEach((freq, i) => {
-                        const osc = audioContext.createOscillator();
-                        const gain = audioContext.createGain();
-                        osc.connect(gain);
-                        gain.connect(audioContext.destination);
-                        osc.frequency.setValueAtTime(freq, audioContext.currentTime + i * 0.15);
-                        gain.gain.setValueAtTime(0.1, audioContext.currentTime + i * 0.15);
-                        gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + i * 0.15 + 0.2);
-                        osc.start(audioContext.currentTime + i * 0.15);
-                        osc.stop(audioContext.currentTime + i * 0.15 + 0.2);
-                    });
-                    break;
-                case 'boot':
-                    oscillator.type = 'square';
-                    oscillator.frequency.setValueAtTime(150, audioContext.currentTime);
-                    oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.5);
-                    gainNode.gain.setValueAtTime(0.08, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-                    oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + 0.5);
-                    break;
-            }
-        }
+    // ── Audio Toggle ──
+    const audioBtn = document.getElementById('audioToggle');
+    let sfxOn = true;
+    audioBtn.addEventListener('click', function() {
+        sfxOn = !sfxOn;
+        audioBtn.textContent = sfxOn ? '🔊 SFX' : '🔇 SFX';
+        showToast(sfxOn ? 'SFX: ON' : 'SFX: OFF');
+    });
 
-        // Boot Screen
-        const bootScreen = document.getElementById('bootScreen');
-        let bootComplete = false;
+    // ── Navigation ──
+    function switchPanel(panelId) {
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab-link').forEach(b => b.classList.remove('active'));
+        document.getElementById(panelId).classList.add('active');
+        event.target.classList.add('active');
+        if (panelId === 'minigame') setTimeout(initGame, 200);
+    }
 
-        function completeBoot() {
-            if (bootComplete) return;
-            bootComplete = true;
-            initAudio();
-            playSound('boot');
-            bootScreen.classList.add('hidden');
-            setTimeout(() => {
-                bootScreen.style.display = 'none';
-                animateStats();
-                animateXPBar();
-                showAchievement('Welcome Explorer!');
-            }, 500);
-        }
-
-        // Auto-complete boot after animation
-        setTimeout(completeBoot, 4000);
-
-        // Press any key to start
-        document.addEventListener('keydown', function(e) {
-            if (!bootComplete) {
-                completeBoot();
-            }
+    document.querySelectorAll('.tab-link').forEach(btn => {
+        btn.addEventListener('click', function() {
+            switchPanel(this.dataset.panel);
         });
+    });
 
-        bootScreen.addEventListener('click', completeBoot);
+    // ═══════════════════════════════════════════
+    //  MINI GAME: BUG DEFENDERS
+    // ═══════════════════════════════════════════
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const container = document.getElementById('gameContainer');
+    const GAME_W = 600, GAME_H = 400;
 
-        // Generate Stars
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 50; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            star.style.animationDuration = (2 + Math.random() * 2) + 's';
-            starsContainer.appendChild(star);
-        }
+    let gameState = 'READY'; // READY | PLAYING | PAUSED | GAME_OVER
+    let score = 0, wave = 1, lives = 3;
+    let hiScore = parseInt(localStorage.getItem('bdHiScore')) || 0;
+    let keys = {}, shootCooldown = 0, shakeTimer = 0, shakeIntensity = 0;
 
-        // Generate Floating Pixels
-        const pixelsContainer = document.getElementById('floatingPixels');
-        for (let i = 0; i < 20; i++) {
-            const pixel = document.createElement('div');
-            pixel.className = 'pixel';
-            pixel.style.left = Math.random() * 100 + '%';
-            pixel.style.animationDelay = Math.random() * 15 + 's';
-            pixel.style.animationDuration = (10 + Math.random() * 10) + 's';
-            pixel.style.opacity = 0.1 + Math.random() * 0.2;
-            const colors = ['#ffa500', '#ff7f7f', '#ffd6a5', '#fdcb6e'];
-            pixel.style.background = colors[Math.floor(Math.random() * colors.length)];
-            pixelsContainer.appendChild(pixel);
-        }
+    let player = { x: GAME_W/2 - 20, y: GAME_H - 50, w: 40, h: 28, speed: 5 };
+    let bullets = [], enemies = [], enemyBullets = [], particles = [], powerUps = [], stars = [];
+    let enemyDir = 1, enemySpeed = 1.2, enemyDrop = 16, enemyShootTimer = 0, powerUpTimer = 0;
 
-        // Typing Effect for Name
-        const name = "SYAHRUL AL-RASYID";
-        const typedName = document.getElementById('typedName');
-        let charIndex = 0;
+    // Codédex palette for game
+    const GAME_COLORS = {
+        player: '#c084fc',
+        playerGlow: '#e2c4ff',
+        enemyBasic: '#ff6b6b',
+        enemyFast: '#ffcc00',
+        enemyBoss: '#4da6ff',
+        bulletPlayer: '#00e699',
+        bulletEnemy: '#ff6b6b',
+        powerRapid: '#ffcc00',
+        powerShield: '#00e699',
+        powerLife: '#ff6b6b',
+        powerScore: '#c084fc'
+    };
 
-        function typeWriter() {
-            if (charIndex < name.length) {
-                typedName.textContent += name.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 100);
+    function resizeCanvas() {
+        const maxW = Math.min(container.clientWidth - 4, GAME_W);
+        canvas.width = GAME_W; canvas.height = GAME_H;
+        canvas.style.width = maxW + 'px'; canvas.style.height = (GAME_H * (maxW/GAME_W)) + 'px';
+    }
+
+    function initStars() {
+        stars = [];
+        for (let i = 0; i < 60; i++) stars.push({
+            x: Math.random() * GAME_W, y: Math.random() * GAME_H,
+            speed: 0.3 + Math.random() * 1.5, brightness: 0.3 + Math.random() * 0.5
+        });
+    }
+
+    function spawnWave() {
+        enemies = [];
+        const rows = Math.min(2 + wave, 6), cols = Math.min(4 + Math.floor(wave/2), 10);
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                const type = r === 0 ? 'boss' : (Math.random() < 0.2 + wave * 0.03 ? 'fast' : 'basic');
+                enemies.push({ x: 40 + c * 48, y: 40 + r * 36, w: 30, h: 22, type, alive: true });
             }
         }
+        enemyDir = 1; enemySpeed = 1.0 + wave * 0.25; enemyDrop = 14 + wave;
+        enemyShootTimer = Math.max(30, 70 - wave * 3);
+    }
 
-        setTimeout(typeWriter, 500);
-
-        // Menu Navigation
-        const menuBtns = document.querySelectorAll('.menu-btn');
-        const panels = document.querySelectorAll('.content-panel');
-        let currentPanelIndex = 0;
-
-        function switchPanel(panelId) {
-            playSound('click');
-            menuBtns.forEach(b => b.classList.remove('active'));
-            panels.forEach(p => p.classList.remove('active'));
-            
-            const btn = document.querySelector(`[data-panel="${panelId}"]`);
-            const panel = document.getElementById(panelId);
-            
-            if (btn) btn.classList.add('active');
-            if (panel) panel.classList.add('active');
-            
-            // Update current index
-            menuBtns.forEach((b, i) => {
-                if (b.dataset.panel === panelId) currentPanelIndex = i;
-            });
-
-            // Re-animate stats if overview
-            if (panelId === 'overview') {
-                setTimeout(() => {
-                    animateStats();
-                    animateXPBar();
-                }, 300);
-            }
+    function spawnPowerUp(x, y) {
+        if (Math.random() < 0.12) {
+            powerUps.push({ x, y, w: 16, h: 16,
+                type: ['rapidFire','shield','extraLife','scoreBoost'][Math.floor(Math.random()*4)],
+                vy: 1.5, alive: true });
         }
+    }
 
-        menuBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                switchPanel(this.dataset.panel);
-            });
-
-            btn.addEventListener('mouseenter', () => playSound('hover'));
+    function createParticles(x, y, color, count) {
+        for (let i = 0; i < count; i++) particles.push({
+            x, y, vx: (Math.random()-0.5)*5, vy: (Math.random()-0.5)*5-2,
+            life: 1, decay: 0.02+Math.random()*0.04, color, size: 1+Math.random()*3
         });
+    }
 
-        // Keyboard Navigation
-        document.addEventListener('keydown', function(e) {
-            if (bootComplete) {
-                if (e.key >= '1' && e.key <= '5') {
-                    const index = parseInt(e.key) - 1;
-                    if (menuBtns[index]) {
-                        switchPanel(menuBtns[index].dataset.panel);
-                    }
-                } else if (e.key === 'ArrowRight') {
-                    currentPanelIndex = (currentPanelIndex + 1) % menuBtns.length;
-                    switchPanel(menuBtns[currentPanelIndex].dataset.panel);
-                } else if (e.key === 'ArrowLeft') {
-                    currentPanelIndex = (currentPanelIndex - 1 + menuBtns.length) % menuBtns.length;
-                    switchPanel(menuBtns[currentPanelIndex].dataset.panel);
-                }
-            }
-        });
+    function resetGame() {
+        score = 0; wave = 1; lives = 3; bullets = []; enemyBullets = []; particles = []; powerUps = [];
+        shootCooldown = 0; powerUpTimer = 0; shakeTimer = 0;
+        player.x = GAME_W/2 - 20; updateHUD(); spawnWave(); gameState = 'PLAYING';
+    }
 
-        // Konami Code Easter Egg
-        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-        let konamiIndex = 0;
+    function updateHUD() {
+        document.getElementById('gameScore').textContent = score;
+        document.getElementById('gameWave').textContent = wave;
+        let h = ['♥','♥','♥']; for (let i = lives; i < 3; i++) h[i] = '♡';
+        document.getElementById('gameLives').textContent = h.join('');
+        document.getElementById('gameHiScore').textContent = hiScore;
+    }
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === konamiCode[konamiIndex]) {
-                konamiIndex++;
-                if (konamiIndex === konamiCode.length) {
-                    document.getElementById('gameConsole').classList.add('konami-activated');
-                    showAchievement('Konami Master!');
-                    konamiIndex = 0;
-                }
-            } else {
-                konamiIndex = 0;
-            }
-        });
+    function drawShip() {
+        const {x, y, w, h} = player;
+        ctx.fillStyle = GAME_COLORS.player; ctx.beginPath();
+        ctx.moveTo(x+w/2, y); ctx.lineTo(x+w, y+h); ctx.lineTo(x+w-6, y+h-6);
+        ctx.lineTo(x+w/2, y+h-4); ctx.lineTo(x+6, y+h-6); ctx.lineTo(x, y+h);
+        ctx.closePath(); ctx.fill();
+        ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = '#1a1a1a'; ctx.beginPath();
+        ctx.ellipse(x+w/2, y+12, 5, 7, 0, 0, Math.PI*2); ctx.fill();
+        ctx.fillStyle = '#ff6b6b'; ctx.beginPath();
+        ctx.ellipse(x+w/2, y+12, 2, 3, 0, 0, Math.PI*2); ctx.fill();
+        // Engine glow
+        const grad = ctx.createLinearGradient(x, y+h, x, y+h+12);
+        grad.addColorStop(0,'rgba(192,132,252,0.5)'); grad.addColorStop(1,'rgba(192,132,252,0)');
+        ctx.fillStyle = grad; ctx.fillRect(x+8, y+h, w-16, 14);
+    }
 
-        // Animate Stats Counter
-        function animateStats() {
-            const statBoxes = document.querySelectorAll('.stat-box');
-            statBoxes.forEach(box => {
-                const valueEl = box.querySelector('.stat-value');
-                const target = parseInt(box.dataset.count);
-                const suffix = box.dataset.suffix || '';
-                let current = 0;
-                
-                const increment = () => {
-                    if (current < target) {
-                        current++;
-                        valueEl.textContent = current + suffix;
-                        valueEl.classList.add('counting');
-                        setTimeout(() => valueEl.classList.remove('counting'), 50);
-                        setTimeout(increment, 100);
-                    }
-                };
-                
-                increment();
-            });
+    function drawBug(e) {
+        const clr = {basic: GAME_COLORS.enemyBasic, fast: GAME_COLORS.enemyFast, boss: GAME_COLORS.enemyBoss}[e.type];
+        ctx.fillStyle = clr; ctx.shadowColor = clr; ctx.shadowBlur = 6;
+        ctx.beginPath(); ctx.ellipse(e.x+e.w/2, e.y+e.h/2, e.w/2, e.h/2, 0, 0, Math.PI*2); ctx.fill();
+        ctx.shadowBlur = 0;
+        // Antennae
+        ctx.strokeStyle = clr; ctx.lineWidth = 2;
+        const wg = Math.sin(Date.now()/150+e.x)*3;
+        ctx.beginPath(); ctx.moveTo(e.x+8,e.y+6); ctx.lineTo(e.x+6+wg,e.y-4); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(e.x+e.w-8,e.y+6); ctx.lineTo(e.x+e.w-6-wg,e.y-4); ctx.stroke();
+        // Eyes
+        ctx.fillStyle = '#fff'; ctx.beginPath();
+        ctx.arc(e.x+9,e.y+10,4,0,Math.PI*2); ctx.arc(e.x+e.w-9,e.y+10,4,0,Math.PI*2); ctx.fill();
+        ctx.fillStyle = '#1a1a1a'; ctx.beginPath();
+        ctx.arc(e.x+9,e.y+10,2,0,Math.PI*2); ctx.arc(e.x+e.w-9,e.y+10,2,0,Math.PI*2); ctx.fill();
+        // Legs
+        ctx.strokeStyle = clr; ctx.lineWidth = 1;
+        for (let s = -1; s <= 1; s += 2) {
+            ctx.beginPath(); ctx.moveTo(e.x+e.w/2+s*8, e.y+e.h/2+4);
+            ctx.lineTo(e.x+e.w/2+s*12+Math.sin(Date.now()/120+e.x+s)*2, e.y+e.h+4); ctx.stroke();
         }
+    }
 
-        // Animate XP Bar
-        function animateXPBar() {
-            const xpFill = document.getElementById('xpFill');
-            const xpPercent = document.getElementById('xpPercent');
-            let percent = 0;
-            const target = 85; // 85% experience
+    function drawBullet(b, isEnemy) {
+        ctx.fillStyle = isEnemy ? GAME_COLORS.bulletEnemy : GAME_COLORS.bulletPlayer;
+        ctx.shadowColor = isEnemy ? GAME_COLORS.bulletEnemy : GAME_COLORS.bulletPlayer;
+        ctx.shadowBlur = 6;
+        ctx.fillRect(b.x-1.5, b.y-5, 3, 10); ctx.shadowBlur = 0;
+    }
 
-            const animatePercent = () => {
-                if (percent < target) {
-                    percent++;
-                    xpFill.style.width = percent + '%';
-                    xpPercent.textContent = percent + '%';
-                    setTimeout(animatePercent, 30);
-                }
-            };
+    function drawPowerUp(p) {
+        const clr = {
+            rapidFire: GAME_COLORS.powerRapid,
+            shield: GAME_COLORS.powerShield,
+            extraLife: GAME_COLORS.powerLife,
+            scoreBoost: GAME_COLORS.powerScore
+        }[p.type];
+        ctx.fillStyle = clr; ctx.shadowColor = clr; ctx.shadowBlur = 10;
+        ctx.fillRect(p.x-p.w/2, p.y-p.h/2, p.w, p.h);
+        ctx.fillStyle = '#1a1a1a'; ctx.font = '9px "Press Start 2P"'; ctx.textAlign = 'center'; ctx.shadowBlur = 0;
+        ctx.fillText({rapidFire:'⚡',shield:'🛡',extraLife:'♥',scoreBoost:'2x'}[p.type], p.x, p.y+3);
+    }
 
-            setTimeout(animatePercent, 500);
+    function update() {
+        if (gameState !== 'PLAYING') return;
+        // Stars scroll
+        stars.forEach(s => { s.y += s.speed; if (s.y > GAME_H) { s.y = 0; s.x = Math.random()*GAME_W; } });
+        // Player
+        if (keys['ArrowLeft']) player.x -= player.speed;
+        if (keys['ArrowRight']) player.x += player.speed;
+        player.x = Math.max(4, Math.min(GAME_W-player.w-4, player.x));
+        // Shoot
+        shootCooldown -= 16;
+        if (keys[' '] && shootCooldown <= 0) {
+            bullets.push({x:player.x+player.w/2, y:player.y-4, vy:-7});
+            bullets.push({x:player.x+8, y:player.y, vy:-7});
+            bullets.push({x:player.x+player.w-8, y:player.y, vy:-7});
+            shootCooldown = 260;
         }
-
-        // Achievement System
-        function showAchievement(text) {
-            const popup = document.getElementById('achievementPopup');
-            const desc = document.getElementById('achievementDesc');
-            desc.textContent = text;
-            popup.classList.add('show');
-            playSound('achievement');
-            
-            setTimeout(() => {
-                popup.classList.remove('show');
-            }, 3000);
+        // Bullets
+        bullets.forEach(b => b.y += b.vy); bullets = bullets.filter(b => b.y > -10);
+        enemyBullets.forEach(b => b.y += b.vy); enemyBullets = enemyBullets.filter(b => b.y < GAME_H+10);
+        // Enemy shoot
+        enemyShootTimer--;
+        if (enemyShootTimer <= 0 && enemies.length > 0) {
+            const a = enemies.filter(e => e.alive);
+            if (a.length) { enemyBullets.push({x:a[Math.floor(Math.random()*a.length)].x+15, y:a[0].y+a[0].h, vy:3.5}); }
+            enemyShootTimer = Math.max(15, 60-wave*3);
         }
-
-        // Track sections visited
-        let sectionsVisited = new Set(['overview']);
-        menuBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const panel = this.dataset.panel;
-                if (!sectionsVisited.has(panel)) {
-                    sectionsVisited.add(panel);
-                    if (sectionsVisited.size === 5) {
-                        setTimeout(() => showAchievement('Full Explorer - All Sections Visited!'), 500);
-                    }
-                }
-            });
-        });
-
-        // Sound Toggle
-        const soundToggle = document.getElementById('soundToggle');
-        const soundIcon = document.getElementById('soundIcon');
-
-        soundToggle.addEventListener('click', () => {
-            soundEnabled = !soundEnabled;
-            soundIcon.textContent = soundEnabled ? '*' : 'X';
-            if (soundEnabled) {
-                playSound('click');
-            }
-        });
-
-        // Add hover sounds to interactive elements
-        document.querySelectorAll('.card, .tech-card, .exp-item, .contact-item, .stat-box, .tech-tag').forEach(item => {
-            item.addEventListener('mouseenter', () => playSound('hover'));
-        });
-
-        // Copy to Clipboard
-        function copyToClipboard(text, label) {
-            navigator.clipboard.writeText(text).then(() => {
-                showAchievement(label + ' Copied!');
-            });
+        // Power-ups
+        powerUpTimer--; if (powerUpTimer <= 0) {
+            if (Math.random() < 0.3) powerUps.push({x:20+Math.random()*(GAME_W-40),y:-10,w:16,h:16,type:['rapidFire','shield','extraLife','scoreBoost'][Math.floor(Math.random()*4)],vy:1.8,alive:true});
+            powerUpTimer = 180+Math.floor(Math.random()*300);
         }
-
-        // Player Avatar Click Easter Egg
-        let avatarClicks = 0;
-        document.getElementById('playerAvatar').addEventListener('click', () => {
-            avatarClicks++;
-            playSound('click');
-            if (avatarClicks === 5) {
-                showAchievement('Avatar Clicker!');
-                avatarClicks = 0;
+        powerUps.forEach(p => p.y += p.vy); powerUps = powerUps.filter(p => p.y < GAME_H+20);
+        // Power-up collect
+        powerUps.forEach(p => { if (!p.alive) return;
+            if (p.x-p.w/2<player.x+player.w && p.x+p.w/2>player.x && p.y-p.h/2<player.y+player.h && p.y+p.h/2>player.y) {
+                p.alive = false; createParticles(player.x+player.w/2,player.y+player.h/2,GAME_COLORS.player,12);
+                if (p.type==='extraLife') lives=Math.min(5,lives+1);
+                else if (p.type==='scoreBoost') score+=100;
+                updateHUD();
             }
-        });
-
-        // Random glitch effect
-        setInterval(() => {
-            if (Math.random() > 0.95) {
-                const gameConsole = document.getElementById('gameConsole');
-                gameConsole.style.transform = `translateX(${(Math.random() - 0.5) * 4}px)`;
-                setTimeout(() => {
-                    gameConsole.style.transform = 'translateX(0)';
-                }, 50);
+        }); powerUps = powerUps.filter(p => p.alive);
+        // Enemy move
+        let edge = false;
+        enemies.forEach(e => { if (!e.alive) return; e.x += enemyDir*enemySpeed; if (e.x<=4||e.x+e.w>=GAME_W-4) edge=true; });
+        if (edge) { enemyDir*=-1; enemies.forEach(e => { if(e.alive) e.y+=enemyDrop; }); }
+        // Bullet hits enemy
+        bullets.forEach(b => { enemies.forEach(e => { if (!e.alive) return;
+            if (b.x>e.x&&b.x<e.x+e.w&&b.y>e.y&&b.y<e.y+e.h) {
+                e.alive=false; b.y=-999;
+                score+={boss:30,fast:20,basic:10}[e.type];
+                createParticles(e.x+e.w/2,e.y+e.h/2,{boss:GAME_COLORS.enemyBoss,fast:GAME_COLORS.enemyFast,basic:GAME_COLORS.enemyBasic}[e.type],8);
+                spawnPowerUp(e.x+e.w/2,e.y+e.h/2); updateHUD();
             }
-        }, 100);
+        }); }); bullets = bullets.filter(b => b.y>-10); enemies = enemies.filter(e => e.alive);
+        // Enemy bullet hits player
+        enemyBullets.forEach(b => {
+            if (b.x>player.x&&b.x<player.x+player.w&&b.y>player.y&&b.y<player.y+player.h) {
+                b.y=9999; lives--; shakeTimer=20; shakeIntensity=8;
+                createParticles(player.x+player.w/2,player.y+player.h/2,GAME_COLORS.enemyBasic,15); updateHUD();
+                if (lives<=0) { gameState='GAME_OVER'; if(score>hiScore){hiScore=score;localStorage.setItem('bdHiScore',hiScore);} updateHUD(); }
+            }
+        }); enemyBullets = enemyBullets.filter(b => b.y<GAME_H+10);
+        // Enemy reaches bottom
+        enemies.forEach(e => { if(e.alive&&e.y+e.h>=player.y) { lives=0; gameState='GAME_OVER'; if(score>hiScore){hiScore=score;localStorage.setItem('bdHiScore',hiScore);} updateHUD(); } });
+        // Wave clear
+        if (enemies.length===0&&gameState==='PLAYING') { wave++; score+=wave*50; if(wave%3===0&&lives<5)lives++; updateHUD(); spawnWave(); }
+        // Particles
+        particles.forEach(p => { p.x+=p.vx; p.y+=p.vy; p.life-=p.decay; }); particles = particles.filter(p => p.life>0);
+        if (shakeTimer>0) shakeTimer--;
+    }
+
+    function draw() {
+        ctx.clearRect(0,0,GAME_W,GAME_H);
+        ctx.save();
+        if (shakeTimer>0) ctx.translate((Math.random()-0.5)*shakeIntensity*(shakeTimer/20),(Math.random()-0.5)*shakeIntensity*(shakeTimer/20));
+        // BG
+        ctx.fillStyle='#f9f9f9'; ctx.fillRect(-10,-10,GAME_W+20,GAME_H+20);
+        ctx.strokeStyle='rgba(26,26,26,0.06)'; ctx.lineWidth=1;
+        for (let x=0;x<GAME_W;x+=30) {ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,GAME_H);ctx.stroke();}
+        for (let y=0;y<GAME_H;y+=30) {ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(GAME_W,y);ctx.stroke();}
+        stars.forEach(s => { ctx.fillStyle=`rgba(26,26,26,${s.brightness*0.4})`; ctx.fillRect(s.x,s.y,1.5,1.5); });
+        particles.forEach(p => { ctx.globalAlpha=p.life; ctx.fillStyle=p.color; ctx.fillRect(p.x-p.size/2,p.y-p.size/2,p.size,p.size); ctx.globalAlpha=1; });
+        ctx.strokeStyle='rgba(26,26,26,0.5)'; ctx.beginPath(); ctx.moveTo(0,GAME_H-34); ctx.lineTo(GAME_W,GAME_H-34); ctx.stroke();
+        enemies.forEach(e => { if(e.alive) drawBug(e); });
+        bullets.forEach(b => drawBullet(b,false));
+        enemyBullets.forEach(b => drawBullet(b,true));
+        powerUps.forEach(p => { if(p.alive) drawPowerUp(p); });
+        if (gameState==='PLAYING'||gameState==='PAUSED') drawShip();
+        ctx.restore();
+        // Overlays
+        if (gameState==='READY') {
+            ctx.fillStyle='rgba(249,249,249,0.85)'; ctx.fillRect(0,0,GAME_W,GAME_H);
+            ctx.fillStyle='#1a1a1a'; ctx.font='20px "Press Start 2P"'; ctx.textAlign='center';
+            ctx.fillText('BUG DEFENDERS',GAME_W/2,GAME_H/2-30);
+            ctx.fillStyle='#ff6b6b'; ctx.font='10px "Press Start 2P"';
+            ctx.fillText('PRESS SPACE TO START',GAME_W/2,GAME_H/2+15);
+            ctx.fillStyle='#666666'; ctx.font='8px "Press Start 2P"';
+            ctx.fillText('DEFEND THE SYSTEM FROM BUGS!',GAME_W/2,GAME_H/2+45);
+        }
+        if (gameState==='GAME_OVER') {
+            ctx.fillStyle='rgba(249,249,249,0.9)'; ctx.fillRect(0,0,GAME_W,GAME_H);
+            ctx.fillStyle='#ff6b6b'; ctx.font='18px "Press Start 2P"'; ctx.textAlign='center';
+            ctx.fillText('GAME OVER',GAME_W/2,GAME_H/2-30);
+            ctx.fillStyle='#1a1a1a'; ctx.font='10px "Press Start 2P"';
+            ctx.fillText('SCORE: '+score,GAME_W/2,GAME_H/2+5);
+            ctx.fillText('WAVE: '+wave,GAME_W/2,GAME_H/2+25);
+            ctx.fillText('HI-SCORE: '+hiScore,GAME_W/2,GAME_H/2+45);
+            if (Math.sin(Date.now()/500)>0) { ctx.fillStyle='#ffcc00'; ctx.font='9px "Press Start 2P"'; ctx.fillText('PRESS R TO RESTART',GAME_W/2,GAME_H/2+80); }
+        }
+        if (gameState==='PAUSED') {
+            ctx.fillStyle='rgba(249,249,249,0.8)'; ctx.fillRect(0,0,GAME_W,GAME_H);
+            ctx.fillStyle='#ffcc00'; ctx.font='16px "Press Start 2P"'; ctx.textAlign='center';
+            ctx.fillText('PAUSED',GAME_W/2,GAME_H/2);
+            ctx.fillStyle='#666666'; ctx.font='9px "Press Start 2P"'; ctx.fillText('PRESS P TO RESUME',GAME_W/2,GAME_H/2+30);
+        }
+    }
+
+    function gameLoop() { update(); draw(); requestAnimationFrame(gameLoop); }
+
+    function initGame() { resizeCanvas(); initStars(); updateHUD(); }
+    initGame();
+
+    // Keyboard for game
+    document.addEventListener('keydown', function(e) {
+        const panel = document.querySelector('.panel.active');
+        if (!panel || panel.id !== 'minigame') return;
+        keys[e.key] = true;
+        if (e.key === ' ') { e.preventDefault(); if (gameState==='READY') resetGame(); }
+        if (e.key === 'p') { if (gameState==='PLAYING') gameState='PAUSED'; else if (gameState==='PAUSED') gameState='PLAYING'; }
+        if (e.key === 'r' && gameState==='GAME_OVER') { hiScore=Math.max(hiScore,score); resetGame(); updateHUD(); }
+    });
+    document.addEventListener('keyup', e => { keys[e.key] = false; });
+    window.addEventListener('resize', () => { if (document.querySelector('#minigame.panel.active')) resizeCanvas(); });
+
+    requestAnimationFrame(gameLoop);
     </script>
 </body>
-
 </html>
